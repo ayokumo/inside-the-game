@@ -1,0 +1,4 @@
+mcp>=2,<3
+uvicorn
+starlette
+pytest
