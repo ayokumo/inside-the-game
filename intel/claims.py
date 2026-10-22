@@ -12,6 +12,7 @@ Claim kinds:
 from __future__ import annotations
 
 import re
+from bisect import bisect_right
 from collections import Counter
 
 from .data import Match
@@ -80,6 +81,8 @@ def verify_claim(match: Match, claim: dict, as_of: float) -> dict:
 
         if kind == "event":
             e = match.by_id.get(claim["event_id"])
+            if e is None and str(claim["event_id"]).lstrip("-").isdigit():
+                e = match.by_id.get(int(claim["event_id"]))
             if e is None:
                 return bad("unknown event id")
             if e["t"] > as_of + 1e-9:
@@ -99,8 +102,9 @@ def verify_claim(match: Match, claim: dict, as_of: float) -> dict:
             c = control_at(match, at)
             if c["label"] != claim["label"] or (claim.get("team") or None) != (c["team"] or None):
                 return bad(f"control label at that time is {c['label']} ({c['team']})")
+            i = max(0, bisect_right(match.ts, at) - 1)
             return {"id": cid, "ok": True, "reason": "", "verified": {"kind": "state", "label": c["label"], "team": c["team"], "at_t": at,
-                                                                      "from_t": c["from_t"]}}
+                                                                      "from_t": c["from_t"], "clock": match.events[i]["clock"]}}
 
         if kind == "threshold":
             for x in threshold_crossings(match, as_of):
@@ -130,11 +134,25 @@ NUMBER_WORDS = ("zero one two three four five six seven eight nine ten eleven tw
                 "seventeen eighteen nineteen twenty thirty forty fifty sixty seventy eighty ninety hundred thousand "
                 "double triple hat-trick brace").split()
 _NUM_RE = re.compile(r"\b(" + "|".join(re.escape(w) for w in NUMBER_WORDS) + r")\b", re.I)
-_PH_OK = re.compile(r"^\{(c\w+(\.(player|team|clock|score))?|player:[\w\-]+|team:(home|away))\}$")
+_PH_OK = re.compile(r"^\{([A-Za-z_]\w*(\.(player|team|clock|score))?|player:[\w\-]+|team:(home|away))\}$")
 
 
 def placeholders(text):
     return PH.findall(text)
+
+
+_FIELDS = {"stat": {None, "team", "player"}, "threshold": {None, "player", "team", "clock"},
+           "event": {"player", "team", "clock", "score"}, "state": {"team", "clock"}}
+
+
+def _field_problem(v, field):
+    allowed = _FIELDS.get(v.get("kind"), set())
+    if field not in allowed:
+        names = sorted(f"{{id.{a}}}" if a else "{id}" for a in allowed)
+        return f"a {v.get('kind')} claim supports only {', '.join(names)}"
+    if field and not v.get(field if field != "score" else "score"):
+        return f"this claim has no {field}"
+    return None
 
 
 def check_skeleton(text: str, verified: dict) -> list:
@@ -143,11 +161,17 @@ def check_skeleton(text: str, verified: dict) -> list:
     problems = []
     for ph in placeholders(text):
         if not _PH_OK.match(ph):
-            problems.append(f"malformed placeholder {ph}")
+            problems.append(f"malformed placeholder {ph}; allowed forms are {{id}}, {{id.player}}, {{id.team}}, "
+                            "{id.clock}, {id.score}, {player:PLAYER_ID}, {team:home}, {team:away}")
             continue
-        m = re.match(r"^\{(c\w+)", ph)
-        if m and m.group(1) not in verified:
-            problems.append(f"placeholder {ph} refers to a claim that is missing or failed verification")
+        m = re.match(r"^\{([A-Za-z_]\w*)(?:\.(\w+))?\}$", ph)
+        if m and not ph.startswith(("{player:", "{team:")):
+            if m.group(1) not in verified:
+                problems.append(f"placeholder {ph} refers to a claim that is missing or failed verification")
+            else:
+                why = _field_problem(verified[m.group(1)], m.group(2))
+                if why:
+                    problems.append(f"placeholder {ph}: {why}")
     bare = PH.sub(" ", text)
     if re.search(r"\d", bare) or "%" in bare:
         problems.append("digits or % outside placeholders")
@@ -215,7 +239,7 @@ def render(match: Match, skeleton: str, verified: dict, loc: str = "en") -> str:
         if field == "team":
             return v["team"]
         if field == "clock":
-            return v["clock"]
+            return f"{v['clock']}'"
         if field == "score":
             h, a = v["score"]
             return f"{h}:{a}"

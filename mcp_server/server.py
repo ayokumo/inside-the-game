@@ -113,7 +113,10 @@ def render_text(match_id: str, as_of: float, skeleton: str, claims: list[dict], 
     failed = [{"id": r["id"], "reason": r["reason"]} for r in res if not r["ok"]]
     if problems or failed:
         return {"ok": False, "problems": problems, "failed_claims": failed, "text": None}
-    return {"ok": True, "problems": [], "failed_claims": [], "text": C.render(m, skeleton, verified, locale)}
+    try:
+        return {"ok": True, "problems": [], "failed_claims": [], "text": C.render(m, skeleton, verified, locale)}
+    except (ValueError, KeyError) as ex:
+        return {"ok": False, "problems": [f"render failed: {ex}"], "failed_claims": [], "text": None}
 
 
 @server.tool()

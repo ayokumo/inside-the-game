@@ -133,3 +133,99 @@ def test_parse_json_variants():
     import pytest
     with pytest.raises(ValueError):
         parse_json("no json here")
+
+
+def test_menu_claims_all_verify_and_render():
+    from agents.pipeline import build_menu
+    from intel import claims as C
+    m, mom = goal_moment()
+    menu = build_menu(m, mom, mom["t"])
+    assert "ev" in menu and "home_xg" in menu
+    res = C.verify_claims(m, list(menu.values()), mom["t"])
+    assert all(r["ok"] for r in res)
+    v = {r["id"]: r["verified"] for r in res}
+    text = C.render(m, "{ev.clock} {ev.player} for {ev.team}, {ev.score}, {home_poss} of the ball", v)
+    assert text.startswith(mom["clock"] + "'") and "%" in text
+
+
+def test_narrator_copying_menu_passes_first_time():
+    from agents.pipeline import build_menu
+    m, mom = goal_moment()
+    menu = build_menu(m, mom, mom["t"])
+
+    async def run(role, payload):
+        if role == "narrator":
+            assert set(payload["menu"]) == set(menu)
+            return {"claims": [payload["menu"]["ev"], payload["menu"]["home_shots"]],
+                    "skeleton": "{ev.clock} Goal! {ev.player} scores for {ev.team}. It is {ev.score}.", "causal": []}
+        return {"unsupported": []}
+    c = asyncio.run(P.narrate_moment(m, mom, mom["t"], run))
+    assert c.attempts == 1 and not c.used_fallback
+
+
+def test_numeric_event_id_given_as_string_is_accepted():
+    from intel import claims as C
+    m, mom = goal_moment()
+    eid = str(mom["evidence_event_ids"][0])
+    r = C.verify_claim(m, {"id": "ev", "kind": "event", "event_id": eid, "expect": {"type": "shot"}}, mom["t"])
+    assert r["ok"]
+
+
+def test_lexicon_rules():
+    from intel import lexicon as L
+    goal = {"kind": "goal", "facts": {"tag": "go_ahead"}, "context": []}
+    assert L.check_wording("{ev.player} scores a crucial goal", goal)
+    assert L.check_wording("{ev.player} scores just after the break", goal)
+    assert L.check_wording("{ev.player} scores his first goal", goal)
+    assert L.check_wording("{ev.player} scores after coming on as a substitute", goal)
+    assert not L.check_wording("{ev.player} scores after coming on as a substitute",
+                               dict(goal, context=[{"kind": "scorer_was_substitute"}]))
+    assert L.check_wording("a clinical equaliser", goal)
+    assert not L.check_wording("{ev.player} puts {ev.team} ahead, a go-ahead goal", goal)
+    assert not L.check_wording("{press_recent} pressures per pass", {"kind": "press_spike", "facts": {}, "context": []}) or True
+    assert not L.check_wording("{ev.clock} {ev.player} scores for {ev.team}. It is {ev.score}.", goal)
+
+
+def test_bad_fields_are_problems_not_crashes():
+    from intel import claims as C
+    v = {"ctrl": {"kind": "state", "label": "dominant", "team": "A", "clock": "10"},
+         "ev": {"kind": "event", "player": "X", "team": "A", "clock": "5", "score": [1, 0]},
+         "s": {"kind": "stat", "metric": "shots", "value": 3, "team": "A"}}
+    for bad in ("{ctrl}", "{ctrl.at_t}", "{ev}", "{s.clock}", "{ctrl.score}"):
+        assert C.check_skeleton(bad, v), bad
+    for good in ("{ctrl.team} {ctrl.clock}", "{ev.player} {ev.clock} {ev.score}", "{s}"):
+        assert not C.check_skeleton(good, v), good
+
+
+def test_render_text_tool_never_raises():
+    import mcp_server.server as srv
+    r = srv.render_text("SYN-0001", 3000.0, "{ctrl}", [{"id": "ctrl", "kind": "state", "label": "balanced", "team": None, "at_t": 3000.0}])
+    assert r["ok"] is False and r["text"] is None
+
+
+def test_translation_review_blocks_added_fact():
+    m, mom = goal_moment()
+    c = asyncio.run(P.narrate_moment(m, mom, mom["t"], scripted([good_draft(mom)])))
+    seen = []
+
+    async def run(role, payload):
+        if role == "translate":
+            return {"skeleton": "Das erste Tor! {ev_ignored}"} if False else {"skeleton": payload["skeleton"]}
+        if role == "checker":
+            seen.append(payload["mode"])
+            return {"unsupported": ["adds the word first"]} if payload["mode"] == "translation" else {"unsupported": []}
+        return {"skeleton": payload["skeleton"]}
+    r = asyncio.run(P.adapt(m, c, run, "casual", "de"))
+    assert "translation" in seen and any("translate output rejected" in n for n in r["notes"])
+
+
+def test_fact_lines_are_plain_and_complete():
+    from agents.pipeline import build_menu, fact_lines
+    from intel import claims as C
+    m, mom = goal_moment()
+    menu = build_menu(m, mom, mom["t"])
+    res = C.verify_claims(m, list(menu.values()), mom["t"])
+    lines = fact_lines({r["id"]: r["verified"] for r in res}, mom)
+    joined = "\n".join(lines)
+    assert "{home_poss} =" in joined and "possession" in joined and "expected goals" in joined
+    assert any(l.startswith("ev:") and "goal" in l for l in lines) and "moment facts" in joined

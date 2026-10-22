@@ -30,11 +30,19 @@ def parse_json(text: str) -> dict:
 class AgentRunner:
     def __init__(self, mcp_url: str | None = None, model: str | None = None, endpoint: str | None = None):
         from agent_framework import Agent, MCPStreamableHTTPTool
-        from agent_framework_foundry import FoundryChatClient
-        from azure.identity import DefaultAzureCredential
 
-        client = FoundryChatClient(project_endpoint=endpoint or os.environ["FOUNDRY_PROJECT_ENDPOINT"],
-                                   model=model or os.environ["FOUNDRY_MODEL"], credential=DefaultAzureCredential())
+        if os.environ.get("GITHUB_TOKEN") and not (endpoint or os.environ.get("FOUNDRY_PROJECT_ENDPOINT")):
+            # development route: GitHub Models (OpenAI compatible). Same agents, different model host.
+            from agent_framework_openai import OpenAIChatClient
+            client = OpenAIChatClient(model=model or os.environ.get("MODEL", "openai/gpt-4.1-mini"),
+                                      api_key=os.environ["GITHUB_TOKEN"], base_url="https://models.github.ai/inference")
+            self.backend = "github-models"
+        else:
+            from agent_framework_foundry import FoundryChatClient
+            from azure.identity import DefaultAzureCredential
+            client = FoundryChatClient(project_endpoint=endpoint or os.environ["FOUNDRY_PROJECT_ENDPOINT"],
+                                       model=model or os.environ["FOUNDRY_MODEL"], credential=DefaultAzureCredential())
+            self.backend = "azure-foundry"
         self.mcp = MCPStreamableHTTPTool(name="match_intel", url=mcp_url or os.environ.get("MCP_URL", "http://127.0.0.1:8000/mcp"),
                                          approval_mode="never_require")
         self.agents = {role: Agent(client, instructions=text, name=role,

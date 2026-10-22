@@ -14,10 +14,13 @@ from dataclasses import dataclass, field
 from typing import Awaitable, Callable
 
 from intel import claims as C
+from intel import lexicon as L
 from intel.data import Match
 from intel.moments import detect_moments
 
 MAX_REWRITES = 2
+MENU_METRICS = (("shots", "shots"), ("shots_on_target", "sot"), ("xg", "xg"),
+                ("possession_pct", "poss"), ("pass_accuracy_pct", "passacc"))
 PERSONAS = ("analyst", "casual", "player_focus", "accessibility")
 
 # an agent call: (role, payload) -> parsed JSON dict
@@ -34,6 +37,7 @@ class Commentary:
     catches: list = field(default_factory=list)   # every rejected draft, kept so the UI can show "caught and fixed"
     attempts: int = 1
     used_fallback: bool = False
+    moment: dict | None = None
 
 
 def template_for(moment: dict, match: Match):
@@ -65,12 +69,73 @@ def _causal_problems(moment: dict, causal: list) -> list:
             for c in causal or [] if c.get("driver_kind") not in have]
 
 
+METRIC_WORDS = {"possession_pct": "possession", "xg": "expected goals (xG)", "pass_accuracy_pct": "pass accuracy",
+                "shots": "shots", "shots_on_target": "shots on target", "press_intensity": "pressures per opposition pass"}
+
+
+def fact_lines(verified: dict, moment: dict | None = None) -> list:
+    """Plain English list of every verified fact, so the LLM reviewer can see what is already supported."""
+    out = []
+    for cid, v in verified.items():
+        k = v["kind"]
+        if k == "stat":
+            who = v.get("player") or v.get("team")
+            out.append(f"{{{cid}}} = {C.format_value(v['metric'], v['value'])}: {who} {METRIC_WORDS.get(v['metric'], v['metric'])}, "
+                       f"from minute {int(v['from_t'] // 60)} to minute {int(v['to_t'] // 60)}")
+        elif k == "event":
+            out.append(f"{cid}: {v['type']} by {v['player']} for {v['team']} at {v['clock']}', outcome {v['outcome']}, score {v['score'][0]}:{v['score'][1]}")
+        elif k == "state":
+            out.append(f"{cid}: control label {v['label']} ({v['team']}) at {v['clock']}'")
+        elif k == "threshold":
+            out.append(f"{cid}: {v['player']} passed {v['level']} {v['threshold']}")
+    if moment:
+        mf = {a: b for a, b in (moment.get("facts") or {}).items() if b is not None}
+        out.append(f"moment facts: kind {moment['kind']}, " + ", ".join(f"{a} {b}" for a, b in mf.items()))
+        out += [f"moment context: {c['kind']}" for c in moment.get("context", [])]
+    return out
+
+
+def build_menu(match: Match, moment: dict, as_of: float) -> dict:
+    """Claims already computed by code for this moment. The Narrator picks from these (copying the object
+    unchanged) and may add its own, which still get verified. Each id doubles as a placeholder name."""
+    from intel.stats import team_stats
+    menu = {}
+    ts = team_stats(match, as_of)
+    for side, team in (("home", match.home), ("away", match.away)):
+        for metric, short in MENU_METRICS:
+            cid = f"{side}_{short}"
+            menu[cid] = {"id": cid, "kind": "stat", "team": team, "metric": metric, "value": round(ts[team][metric], 4),
+                         "from_t": 0, "to_t": as_of}
+    eid = (moment["evidence_event_ids"] or [None])[0]
+    if eid is not None:
+        e = match.by_id[eid]
+        expect = {"type": e["type"], "team": e["team"], "player_id": e["player_id"]}
+        if e["type"] == "shot":
+            expect["outcome"] = e["outcome"]
+        menu["ev"] = {"id": "ev", "kind": "event", "event_id": eid, "expect": expect}
+    f = moment["facts"]
+    if moment["kind"] == "press_spike":
+        from intel.stats import team_stats as _ts
+        recent = _ts(match, moment["t"], f["window_from_t"])[moment["team"]]["press_intensity"]
+        before = _ts(match, f["window_from_t"], 0.0)[moment["team"]]["press_intensity"]
+        menu["press_recent"] = {"id": "press_recent", "kind": "stat", "team": moment["team"], "metric": "press_intensity",
+                                "value": round(recent, 4), "from_t": f["window_from_t"], "to_t": moment["t"]}
+        menu["press_before"] = {"id": "press_before", "kind": "stat", "team": moment["team"], "metric": "press_intensity",
+                                "value": round(before, 4), "from_t": 0, "to_t": f["window_from_t"]}
+    if moment["kind"] == "control_shift":
+        menu["ctrl"] = {"id": "ctrl", "kind": "state", "label": f["label"], "team": moment["team"], "at_t": moment["t"]}
+    ok = {r["id"] for r in C.verify_claims(match, list(menu.values()), as_of) if r["ok"]}
+    return {k: v for k, v in menu.items() if k in ok}
+
+
 async def narrate_moment(match: Match, moment: dict, as_of: float, run: Runner, analyst_note: dict | None = None) -> Commentary:
     if moment["t"] > as_of + 1e-9:
         raise ValueError("cannot narrate a moment that has not happened yet at as_of")
+    menu = build_menu(match, moment, as_of)
     catches, feedback = [], []
     for attempt in range(MAX_REWRITES + 1):
         draft = await run("narrator", {"moment": moment, "analyst": analyst_note, "feedback": feedback,
+                                       "menu": menu,
                                        "match_id": match.match_id, "as_of": as_of})
         cl, sk = draft.get("claims", []) or [], draft.get("skeleton", "") or ""
         results = C.verify_claims(match, cl, as_of)
@@ -78,13 +143,14 @@ async def narrate_moment(match: Match, moment: dict, as_of: float, run: Runner, 
         problems = [{"kind": "claim", "claim_id": r["id"], "claim": next((c for c in cl if c.get("id") == r["id"]), None),
                      "reason": r["reason"]} for r in results if not r["ok"]]
         problems += [{"kind": "wording", "reason": p, "skeleton": sk} for p in C.check_skeleton(sk, verified)]
+        problems += [{"kind": "wording", "reason": p, "skeleton": sk} for p in L.check_wording(sk, moment)]
         problems += [{"kind": "causal", "reason": p} for p in _causal_problems(moment, draft.get("causal"))]
         if not problems:
             text = C.render(match, sk, verified)
-            review = await run("checker", {"text": text, "verified": verified, "moment": moment})
+            review = await run("checker", {"mode": "narration", "text": text, "facts": fact_lines(verified, moment)})
             problems += [{"kind": "unsupported", "reason": u} for u in review.get("unsupported", []) or []]
             if not problems:
-                return Commentary(moment["id"], sk, cl, verified, text, catches, attempt + 1)
+                return Commentary(moment["id"], sk, cl, verified, text, catches, attempt + 1, moment=moment)
         catches.append({"attempt": attempt + 1, "rejected_skeleton": sk, "problems": problems})
         feedback = [p["reason"] for p in problems]
     cl, sk = template_for(moment, match)
@@ -92,7 +158,7 @@ async def narrate_moment(match: Match, moment: dict, as_of: float, run: Runner, 
     verified = {r["id"]: r["verified"] for r in results if r["ok"]}
     if len(verified) != len(cl) or C.check_skeleton(sk, verified):
         raise RuntimeError("template fallback failed verification; this is a bug")
-    return Commentary(moment["id"], sk, cl, verified, C.render(match, sk, verified), catches, MAX_REWRITES + 1, True)
+    return Commentary(moment["id"], sk, cl, verified, C.render(match, sk, verified), catches, MAX_REWRITES + 1, True, moment)
 
 
 async def adapt(match: Match, c: Commentary, run: Runner, persona: str = "casual", locale: str = "en",
@@ -114,6 +180,11 @@ async def adapt(match: Match, c: Commentary, run: Runner, persona: str = "casual
             fine = not C.check_skeleton(out, c.verified) and set(C.placeholders(out)) <= allowed
             if step == "translate":
                 fine = fine and C.same_placeholders(sk, out)
+            else:
+                fine = fine and not L.check_wording(out, c.moment)
+            if fine:                                       # independent LLM review: did the rewrite add or change a fact?
+                rev = await run("checker", {"mode": "translation" if step == "translate" else "persona", "source": sk, "candidate": out, "facts": fact_lines(c.verified, c.moment)})
+                fine = not (rev.get("unsupported") or [])
             if fine:
                 sk, ok = out, True
                 break
