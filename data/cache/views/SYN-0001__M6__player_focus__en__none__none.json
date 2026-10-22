@@ -1,0 +1,1 @@
+{"skeleton": "{ev.clock} {ev.player} scores for {ev.team} with a shot to make it {ev.score}. {ev.team} have taken {home_shots} shots and hold {home_poss} possession with an expected goals total of {home_xg}.", "notes": ["persona output rejected, kept previous wording"]}

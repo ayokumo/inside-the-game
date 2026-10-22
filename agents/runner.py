@@ -3,6 +3,7 @@ tool (the same server the UI and any other client can use). Needs Foundry creden
 system exercised only with a live model; the loop around it is tested with scripted agents."""
 from __future__ import annotations
 
+import asyncio
 import json
 import os
 import re
@@ -59,7 +60,16 @@ class AgentRunner:
     async def __call__(self, role: str, payload: dict) -> dict:
         last = None
         for _ in range(2):                                   # one retry on malformed JSON
-            reply = await self.agents[role].run(json.dumps(payload, default=str))
+            reply = None
+            for wait in (2, 6, 15, None):                    # backoff for rate limits and transient service errors
+                try:
+                    reply = await self.agents[role].run(json.dumps(payload, default=str))
+                    break
+                except Exception as ex:
+                    if wait is None:
+                        raise
+                    print(f"[{role}] retrying in {wait}s after {type(ex).__name__}")
+                    await asyncio.sleep(wait)
             try:
                 return parse_json(reply.text)
             except ValueError as e:

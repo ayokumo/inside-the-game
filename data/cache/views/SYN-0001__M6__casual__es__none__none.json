@@ -1,0 +1,1 @@
+{"skeleton": "{ev.clock} {ev.player} marca para {ev.team} con un disparo para poner el marcador {ev.score}. {ev.team} ha realizado {home_shots} disparos y tiene {home_poss} de posesi\u00f3n con un total de goles esperados de {home_xg}.", "notes": []}

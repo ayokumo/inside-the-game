@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Match Intel</title>
+<style>
+:root{
+  --bg:#070b14; --panel:#0e1626; --panel2:#131f35; --line:#1f2f4d; --text:#e8eefc; --mute:#8fa1c4;
+  --home:#22d3ee; --away:#f472b6; --ok:#a3e635; --warn:#fbbf24; --grass:#0b2a1c; --grass2:#0e3322;
+  --fs:16px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font:var(--fs)/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+button,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--warn);outline-offset:2px}
+body.a11y{--fs:21px;--bg:#000;--panel:#0a0a0a;--panel2:#141414;--line:#6b7280;--mute:#d1d5db}
+header{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#0b1424,#070b14)}
+.brand{font-weight:800;letter-spacing:.12em;font-size:.95em;color:var(--home);margin-right:6px}
+.brand small{color:var(--mute);font-weight:600;letter-spacing:.06em;margin-left:8px}
+select{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:7px 10px;max-width:100%}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tab{background:var(--panel2);border:1px solid var(--line);border-radius:999px;padding:7px 14px}
+.tab[aria-selected=true]{background:var(--home);color:#04202a;border-color:var(--home);font-weight:700}
+.score{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;padding:14px 16px;background:linear-gradient(90deg,#0c1d33,#0e1626 50%,#2a1030);border-bottom:1px solid var(--line)}
+.team{font-size:1.25em;font-weight:800}
+.team.home{text-align:right;color:var(--home)} .team.away{color:var(--away)}
+.team .star{color:var(--warn)}
+.mid{text-align:center}
+.mid .digits{font-size:2.3em;font-weight:900;font-variant-numeric:tabular-nums;letter-spacing:.04em}
+.mid .clock{color:var(--mute);font-variant-numeric:tabular-nums}
+.badge{display:inline-block;border-radius:999px;padding:2px 10px;font-size:.78em;border:1px solid var(--line);color:var(--mute);margin-left:6px;background:var(--panel2)}
+.badge.ok{border-color:var(--ok);color:var(--ok)}
+.badge.warn{border-color:var(--warn);color:var(--warn);cursor:pointer}
+.badge.gray{border-color:#6b7280;color:#cbd5e1}
+main{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:16px;padding:16px}
+@media (max-width:900px){main{grid-template-columns:1fr}.score{grid-template-columns:1fr}.team.home,.team.away{text-align:center}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px}
+canvas{width:100%;height:auto;aspect-ratio:105/68;display:block;border-radius:10px;background:var(--grass)}
+.controls{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:10px}
+.controls button{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:8px 14px}
+.controls button.primary{background:var(--home);color:#04202a;border-color:var(--home);font-weight:800}
+input[type=range]{width:100%;accent-color:var(--home);margin:0}
+.seekwrap{flex:1 1 220px;min-width:0}
+.timeline{position:relative;height:16px;margin:2px 8px 0}
+.timeline i{position:absolute;top:0;width:6px;height:14px;border-radius:3px;transform:translateX(-50%);opacity:.9}
+.stats{display:grid;gap:8px;margin-top:12px}
+.bar{display:grid;grid-template-columns:3.2em 1fr 3.2em;gap:8px;align-items:center;font-variant-numeric:tabular-nums}
+.bar .track{height:10px;border-radius:6px;background:var(--panel2);display:flex;overflow:hidden}
+.bar .track b{display:block;height:100%}
+.bar .l{text-align:right;color:var(--home)} .bar .r{color:var(--away)}
+.bar .name{grid-column:1/-1;color:var(--mute);font-size:.8em;margin-bottom:-4px;text-align:center}
+.feedhead{display:flex;justify-content:space-between;align-items:center;margin:0 0 8px}
+.feedhead h2{margin:0;font-size:1.05em;letter-spacing:.05em;text-transform:uppercase;color:var(--mute)}
+#feed{display:grid;gap:10px;max-height:calc(100vh - 220px);overflow:auto;padding-right:4px}
+.item{background:var(--panel2);border:1px solid var(--line);border-left:5px solid var(--mute);border-radius:12px;padding:10px 12px}
+.item.home{border-left-color:var(--home)} .item.away{border-left-color:var(--away)}
+.item.mine{box-shadow:0 0 0 2px var(--warn) inset}
+.item .top{display:flex;gap:8px;align-items:center;flex-wrap:wrap;color:var(--mute);font-size:.82em;margin-bottom:4px}
+.item .kind{font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--text)}
+.item p{margin:0 0 6px}
+.chip{background:#0b2a3a;border:1px solid var(--home);color:#c8f3ff;border-radius:6px;padding:0 6px;font-weight:700}
+.item.away .chip{background:#3a0b27;border-color:var(--away);color:#ffd3ea}
+.chip.open{outline:2px solid var(--warn)}
+.receipt,.catches{background:#070b14;border:1px dashed var(--line);border-radius:8px;padding:8px 10px;margin-top:6px;font-size:.88em;color:var(--mute)}
+.receipt b,.catches b{color:var(--text)}
+.catches code{display:block;white-space:pre-wrap;color:#fca5a5;margin:4px 0;font-size:.9em}
+.empty{color:var(--mute);padding:20px;text-align:center}
+.small{color:var(--mute);font-size:.82em}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+footer{padding:0 16px 20px;color:var(--mute);font-size:.82em}
+.playercard{margin-top:10px;display:none}
+.playercard.on{display:block}
+.playercard table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.playercard td{padding:3px 6px;border-bottom:1px solid var(--line)}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">MATCH INTEL<small>synthetic data</small></div>
+  <label class="small">Match <select id="matchSel" aria-label="Match"></select></label>
+  <label class="small">Your club <select id="favSel" aria-label="Your club"><option value="">Pick your club</option></select></label>
+  <div class="tabs" role="tablist" aria-label="View" id="tabs"></div>
+  <label class="small" id="playerWrap" hidden>Player <select id="playerSel" aria-label="Player"></select></label>
+  <label class="small">Language <select id="langSel" aria-label="Language">
+    <option value="en">English</option><option value="de">Deutsch</option><option value="fr">Français</option>
+    <option value="es">Español</option><option value="pt">Português</option></select></label>
+</header>
+
+<section class="score" aria-live="polite">
+  <div class="team home" id="homeName"></div>
+  <div class="mid"><div class="digits" id="digits">0 : 0</div><div class="clock"><span id="clock">1'</span><span class="badge" id="ctrl">balanced</span></div></div>
+  <div class="team away" id="awayName"></div>
+</section>
+
+<main>
+  <section class="card">
+    <canvas id="pitch" width="1050" height="680" aria-label="Pitch replay of recent events"></canvas>
+    <div class="controls">
+      <button class="primary" id="play" aria-pressed="false">Play</button>
+      <button id="next">Next moment</button>
+      <label class="small">Speed <select id="speed"><option value="30">30x</option><option value="60" selected>60x</option><option value="150">150x</option></select></label>
+      <div class="seekwrap"><input type="range" id="seek" min="0" max="5400" step="1" value="0" aria-label="Match time"><div class="timeline" id="timeline" aria-hidden="true"></div></div>
+    </div>
+    <div class="stats" id="stats"></div>
+    <div class="playercard card" id="playercard"></div>
+  </section>
+  <section class="card">
+    <div class="feedhead"><h2>Commentary</h2><label class="small row"><input type="checkbox" id="readAuto"> Read aloud</label></div>
+    <div id="feed" aria-live="polite"><div class="empty">Press Play. Commentary appears as moments happen, and every number can be opened to see how it was checked.</div></div>
+  </section>
+</main>
+<footer id="foot"></footer>
+
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const S = {matches:[], match:null, ev:[], dur:5400, t:0, playing:false, last:0, persona:"casual", locale:"en",
+           fav:"", playerId:"", views:new Map(), moments:[], inflight:false, lastPoll:-1, cfg:{}};
+const PERSONAS = {analyst:"Analyst", casual:"Casual fan", player_focus:"Player focus", accessibility:"Accessibility"};
+const KINDS = {goal:"Goal", red_card:"Red card", big_chance_missed:"Big chance", press_spike:"Pressure rise", control_shift:"Control"};
+const COL = ["#22d3ee", "#f472b6"];
+
+async function api(path){ const r = await fetch(path); if(!r.ok) throw new Error(path+" "+r.status); return r.json(); }
+const fmt = s => { const m = Math.floor(s/60); return m+"'"; };
+
+/* ---------- setup ---------- */
+async function init(){
+  S.cfg = await api("/api/config");
+  S.matches = await api("/api/matches");
+  $("matchSel").innerHTML = S.matches.map(m=>`<option value="${m.match_id}">${m.home} v ${m.away}</option>`).join("");
+  $("tabs").innerHTML = Object.entries(PERSONAS).map(([k,v])=>`<button class="tab" role="tab" data-p="${k}" aria-selected="${k===S.persona}">${v}</button>`).join("");
+  $("tabs").addEventListener("click", e=>{ const b=e.target.closest(".tab"); if(b) setPersona(b.dataset.p); });
+  $("matchSel").onchange = ()=>loadMatch($("matchSel").value);
+  $("favSel").onchange = ()=>{ S.fav=$("favSel").value; refreshViews(); renderHeader(); };
+  $("langSel").onchange = ()=>{ S.locale=$("langSel").value; refreshViews(); };
+  $("playerSel").onchange = ()=>{ S.playerId=$("playerSel").value; refreshViews(); poll(true); };
+  $("play").onclick = togglePlay;
+  $("next").onclick = nextMoment;
+  $("seek").oninput = e=>{ S.t=+e.target.value; trimFeed(); poll(true); };
+  $("speed").onchange = ()=>{};
+  document.addEventListener("keydown", e=>{ if(e.code==="Space" && !/SELECT|INPUT|BUTTON/.test(e.target.tagName)){ e.preventDefault(); togglePlay(); }});
+  await loadMatch(S.matches[0].match_id);
+  requestAnimationFrame(loop);
+  setInterval(()=>poll(false), 450);
+}
+
+async function loadMatch(id){
+  S.playing=false; $("play").textContent="Play"; $("play").setAttribute("aria-pressed","false");
+  S.match = S.matches.find(m=>m.match_id===id);
+  const d = await api(`/api/match/${id}/events`);
+  S.ev = d.events; S.dur = d.duration; S.t = 0; S.turbo=false; S.views.clear(); S.moments=[]; S.lastPoll=-1;
+  $("seek").max = Math.floor(S.dur); $("seek").value = 0;
+  $("favSel").innerHTML = `<option value="">Pick your club</option><option>${S.match.home}</option><option>${S.match.away}</option>`;
+  S.fav = "";
+  const pl = [...S.match.home_players, ...S.match.away_players];
+  $("playerSel").innerHTML = `<option value="">Choose a player</option>` + pl.map(p=>`<option value="${p.player_id}">${p.name}</option>`).join("");
+  S.playerId = "";
+  $("feed").innerHTML = `<div class="empty">Press Play. Commentary appears as moments happen, and every number can be opened to see how it was checked.</div>`;
+  $("timeline").innerHTML = "";
+  renderHeader(); await poll(true);
+}
+
+function renderHeader(){
+  const m=S.match;
+  $("homeName").innerHTML = (S.fav===m.home?'<span class="star" aria-label="your club">★</span> ':"")+m.home;
+  $("awayName").innerHTML = m.away+(S.fav===m.away?' <span class="star" aria-label="your club">★</span>':"");
+  $("foot").textContent = `Commentary source: ${S.cfg.mode}${S.cfg.backend?" ("+S.cfg.backend+")":""}. Every number is recomputed by code from the event log before it is shown. All match data is synthetic. Interface labels are English; commentary follows the language you pick.`;
+}
+function setPersona(p){
+  S.persona=p;
+  document.querySelectorAll(".tab").forEach(b=>b.setAttribute("aria-selected", b.dataset.p===p));
+  document.body.classList.toggle("a11y", p==="accessibility");
+  $("playerWrap").hidden = p!=="player_focus";
+  $("playercard").classList.toggle("on", p==="player_focus");
+  refreshViews(); poll(true);
+}
+
+/* ---------- playback ---------- */
+function togglePlay(){
+  S.playing=!S.playing; S.last=performance.now();
+  $("play").textContent=S.playing?"Pause":"Play"; $("play").setAttribute("aria-pressed",S.playing);
+}
+function nextMoment(){
+  S.skipFrom = S.moments.length; S.turbo = true;           // fast forward until a new moment appears; never peeks ahead
+  if(!S.playing) togglePlay();
+}
+function loop(now){
+  if(S.playing){
+    S.t = Math.min(S.dur, S.t + (now-S.last)/1000 * (S.turbo ? 900 : +$("speed").value));
+    if(S.t>=S.dur){ S.playing=false; $("play").textContent="Play"; }
+    $("seek").value = Math.floor(S.t);
+  }
+  S.last = now; draw(); requestAnimationFrame(loop);
+}
+
+/* ---------- pitch ---------- */
+const cv=$("pitch"), cx=cv.getContext("2d"), W=cv.width, H=cv.height, sx=W/105, sy=H/68;
+function pitchBase(){
+  cx.fillStyle="#0b2a1c"; cx.fillRect(0,0,W,H);
+  for(let i=0;i<10;i++){ if(i%2) { cx.fillStyle="#0e3322"; cx.fillRect(i*W/10,0,W/10,H);} }
+  cx.strokeStyle="rgba(232,238,252,.55)"; cx.lineWidth=2;
+  cx.strokeRect(2,2,W-4,H-4);
+  cx.beginPath(); cx.moveTo(W/2,0); cx.lineTo(W/2,H); cx.stroke();
+  cx.beginPath(); cx.arc(W/2,H/2,9.15*sx,0,7); cx.stroke();
+  for(const s of [0,1]){
+    const x0 = s? W-16.5*sx : 0, x1 = s? W-5.5*sx : 0;
+    cx.strokeRect(x0,(68-40.3)/2*sy,16.5*sx,40.3*sy); cx.strokeRect(x1,(68-18.3)/2*sy,5.5*sx,18.3*sy);
+  }
+}
+function draw(){
+  pitchBase();
+  const t=S.t, win=45, ev=S.ev;
+  let lastEnd=null;
+  for(let i=0;i<ev.length;i++){
+    const e=ev[i]; if(e[1]>t) break; const age=t-e[1]; if(age>win) continue;
+    const a=1-age/win, [id,et,ty,team,st,en,out,xg,pl]=e, c=COL[team];
+    if(!st) continue;
+    cx.globalAlpha=Math.max(.12,a); cx.strokeStyle=c; cx.fillStyle=c; cx.lineWidth=ty==="shot"?4:2;
+    if(ty==="pass"&&en){
+      cx.setLineDash(team?[8,6]:[]); cx.beginPath(); cx.moveTo(st[0]*sx,st[1]*sy); cx.lineTo(en[0]*sx,en[1]*sy); cx.stroke(); cx.setLineDash([]);
+      cx.beginPath(); cx.arc(en[0]*sx,en[1]*sy,out==="complete"?4:6,0,7); out==="complete"?cx.fill():cx.stroke();
+      lastEnd=en;
+    } else if(ty==="shot"&&en){
+      cx.beginPath(); cx.moveTo(st[0]*sx,st[1]*sy); cx.lineTo(en[0]*sx,en[1]*sy); cx.stroke();
+      cx.beginPath(); cx.arc(st[0]*sx,st[1]*sy,7+(xg||0)*30,0,7); cx.stroke();
+      if(out==="goal"){ cx.lineWidth=3; cx.strokeStyle="#fbbf24"; cx.beginPath(); cx.arc(en[0]*sx,en[1]*sy,16,0,7); cx.stroke(); }
+      lastEnd=en;
+    } else if(ty==="pressure"){ cx.beginPath(); cx.arc(st[0]*sx,st[1]*sy,5,0,7); cx.fill(); }
+    else if(ty==="tackle"||ty==="interception"||ty==="foul"){ cx.fillRect(st[0]*sx-4,st[1]*sy-4,8,8); }
+    cx.globalAlpha=1;
+  }
+  if(lastEnd){ cx.fillStyle="#fff"; cx.beginPath(); cx.arc(lastEnd[0]*sx,lastEnd[1]*sy,6,0,7); cx.fill(); }
+  // attack directions
+  const p2 = t>=2700; const dirHome = p2? "←":"→", dirAway = p2? "→":"←";
+  cx.font="bold 26px system-ui"; cx.textAlign="center"; cx.fillStyle=COL[0]; cx.fillText("HOME attacks "+dirHome, W*.25, 34);
+  cx.fillStyle=COL[1]; cx.fillText("AWAY attacks "+dirAway, W*.75, 34);
+}
+
+/* ---------- state polling and commentary ---------- */
+async function poll(force){
+  if(S.inflight || !S.match) return;
+  const t = Math.floor(S.t);
+  if(!force && t===S.lastPoll) return;
+  S.inflight=true;
+  try{
+    const st = await api(`/api/match/${S.match.match_id}/state?as_of=${t}`);
+    S.lastPoll=t; renderState(st);
+    if(S.persona==="player_focus" && S.playerId){
+      const p = await api(`/api/match/${S.match.match_id}/player?as_of=${t}&player_id=${S.playerId}`);
+      renderPlayer(p);
+    }
+  }catch(e){ console.error(e); } finally{ S.inflight=false; }
+}
+function renderState(st){
+  $("digits").textContent = `${st.score[0]} : ${st.score[1]}`;
+  $("clock").textContent = st.clock+"'";
+  const c=st.control; $("ctrl").textContent = c.label==="dominant" ? `${c.team} in control` : c.label;
+  $("ctrl").className="badge "+(c.label==="balanced"?"":"ok");
+  const rows=[["Possession","possession_pct",v=>Math.round(v)+"%"],["Shots","shots",v=>v],["On target","shots_on_target",v=>v],
+              ["Expected goals","xg",v=>v.toFixed(2)],["Pass accuracy","pass_accuracy_pct",v=>Math.round(v)+"%"]];
+  $("stats").innerHTML = rows.map(([n,k,f])=>{
+    const a=st.stats.home[k], b=st.stats.away[k], tot=(a+b)||1;
+    return `<div class="bar"><div class="name">${n}</div><div class="l">${f(a)}</div><div class="track"><b style="width:${100*a/tot}%;background:${COL[0]}"></b><b style="width:${100*b/tot}%;background:${COL[1]}"></b></div><div class="r">${f(b)}</div></div>`;
+  }).join("");
+  S.moments = st.moments;
+  if(S.turbo && st.moments.length > S.skipFrom) S.turbo = false;
+  $("timeline").innerHTML = st.moments.map(m=>`<i title="${KINDS[m.kind]} ${fmt(m.t)}" style="left:${100*m.t/S.dur}%;background:${m.kind==="goal"?"#fbbf24":m.kind==="red_card"?"#ef4444":"#64748b"}"></i>`).join("");
+  st.moments.forEach(m=>{ if(!S.views.has(m.id)) loadView(m); });
+}
+function renderPlayer(p){
+  $("playercard").innerHTML = `<b>${p.name}</b> <span class="small">${p.team}</span><table>
+   <tr><td>Passes</td><td>${p.completed_passes}/${p.passes}</td><td>Shots</td><td>${p.shots}</td></tr>
+   <tr><td>Goals</td><td>${p.goals}</td><td>Expected goals</td><td>${p.xg.toFixed(2)}</td></tr>
+   <tr><td>Distance</td><td>${p.distance_km.toFixed(1)} km</td><td>Top speed</td><td>${p.top_speed_kmh.toFixed(1)} km/h</td></tr></table>`;
+}
+
+function qs(){ return `as_of=${Math.floor(S.t)}&persona=${S.persona}&locale=${S.locale}&favorite_team=${encodeURIComponent(S.fav)}&player_id=${S.playerId}`; }
+async function loadView(m){
+  S.views.set(m.id, {pending:true, t:m.t});
+  try{
+    const v = await api(`/api/match/${S.match.match_id}/moment/${encodeURIComponent(m.id)}?${qs()}`);
+    S.views.set(m.id, v); renderFeed(m.id);
+  }catch(e){ console.error(e); S.views.delete(m.id); }
+}
+function refreshViews(){
+  const ids=[...S.views.keys()]; S.views.clear();
+  ids.forEach(id=>{ const m=S.moments.find(x=>x.id===id); if(m) loadView(m); });
+}
+function trimFeed(){
+  for(const [id,v] of [...S.views]){ if(v.t>S.t || (v.moment&&v.moment.t>S.t)){ S.views.delete(id); const el=document.querySelector(`[data-id="${CSS.escape(id)}"]`); if(el) el.remove(); } }
+}
+
+function esc(s){ return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+function renderFeed(id){
+  const v=S.views.get(id); if(!v||v.pending) return;
+  const feed=$("feed"); if(feed.querySelector(".empty")) feed.innerHTML="";
+  let el=document.querySelector(`[data-id="${CSS.escape(id)}"]`);
+  const side = v.moment.team===S.match.home?"home":v.moment.team===S.match.away?"away":"";
+  const mine = S.fav && v.moment.team===S.fav;
+  if(!el){ el=document.createElement("article"); el.dataset.id=id; el.dataset.t=v.moment.t; }
+  el.className=`item ${side} ${mine?"mine":""}`;
+  const body = v.parts.map(p=> p.claim ? `<button class="chip" data-c="${esc(p.claim)}" aria-label="Show how this was checked">${esc(p.text)}</button>` : esc(p.text)).join("");
+  const nC = v.catches.length;
+  const badges = [
+    v.source.startsWith("template") ? `<span class="badge gray" title="Agent commentary is not loaded, so a plain template wrote this. Numbers are still checked.">Template, agents offline</span>`
+      : v.used_fallback ? `<span class="badge gray" title="The agents' drafts were rejected, so the safe template wrote this">Template fallback</span>` : `<span class="badge ok">Verified by code</span>`,
+    nC ? `<button class="badge warn" data-catch="1">Caught and fixed ×${nC}</button>` : "",
+    mine ? `<span class="badge">Your club</span>`:"",
+    v.source.startsWith("template") ? "" : `<span class="badge">${esc(v.source)}</span>`
+  ].join("");
+  el.innerHTML = `<div class="top"><span class="kind">${KINDS[v.moment.kind]||v.moment.kind}</span><span>${v.moment.clock}'</span>${badges}
+     <button class="badge" data-say="1" aria-label="Read this aloud">Read</button></div>
+     <p>${body||"<span class='small'>No commentary for this moment.</span>"}</p><div class="drawer"></div>`;
+  el.querySelector("[data-say]").onclick=()=>speak(v.text, v.locale);
+  el.querySelectorAll(".chip").forEach(b=>b.onclick=()=>toggleReceipt(el,v,b));
+  const cb=el.querySelector("[data-catch]"); if(cb) cb.onclick=()=>toggleCatches(el,v);
+  if(!el.parentNode){
+    const items=[...feed.children]; const pos=items.find(x=>+x.dataset.t < v.moment.t);
+    pos ? feed.insertBefore(el,pos) : feed.appendChild(el);
+    if($("readAuto").checked) speak(v.text, v.locale);
+  }
+}
+function toggleReceipt(el,v,btn){
+  const d=el.querySelector(".drawer"); const c=btn.dataset.c, r=v.receipts[c];
+  if(d.dataset.open===c){ d.innerHTML=""; d.dataset.open=""; btn.classList.remove("open"); return; }
+  el.querySelectorAll(".chip").forEach(x=>x.classList.remove("open")); btn.classList.add("open"); d.dataset.open=c;
+  const x=r.verified; let html="";
+  if(x.kind==="stat"){
+    const who=x.player||x.team;
+    html=`<b>${esc(x.metric.replaceAll("_"," "))}</b> for ${esc(who)}, minute ${Math.floor(x.from_t/60)} to ${Math.floor(x.to_t/60)}.<br>
+      The writer claimed <b>${r.claimed_value}</b>. Code recomputed <b>${(+x.value).toFixed(3)}</b> from <b>${r.events_in_window}</b> events in that window. Shown value comes from the recomputation.`;
+  } else if(x.kind==="event"){
+    const e=r.event||{};
+    html=`Event <b>#${x.event_id}</b>: ${esc(x.type)} by ${esc(x.player||"")} (${esc(x.team)}) at ${esc(x.clock)}', outcome ${esc(x.outcome||"n/a")}${e.xg!==undefined?`, expected goals ${e.xg}`:""}. Looked up in the event log by code.`;
+  } else if(x.kind==="state"){
+    html=`Control label <b>${esc(x.label)}</b> (${esc(x.team||"no team")}) recomputed over the 8 minutes before ${esc(x.clock)}'.`;
+  } else { html=esc(JSON.stringify(x)); }
+  d.innerHTML=`<div class="receipt">${html}</div>`;
+}
+function toggleCatches(el,v){
+  const d=el.querySelector(".drawer");
+  if(d.dataset.open==="catch"){ d.innerHTML=""; d.dataset.open=""; return; } d.dataset.open="catch";
+  d.innerHTML=`<div class="catches"><b>The checker rejected ${v.catches.length} draft${v.catches.length>1?"s":""} before this one.</b>` +
+    v.catches.map(k=>`<div>Attempt ${k.attempt}: ${k.problems.map(p=>esc(p.reason)).join("; ")}<code>${esc(k.rejected_skeleton||"")}</code></div>`).join("")+`</div>`;
+}
+function speak(text, loc){
+  if(!("speechSynthesis" in window)) return;
+  speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(text); u.lang={en:"en-GB",de:"de-DE",fr:"fr-FR",es:"es-ES",pt:"pt-PT"}[loc]||"en-GB"; speechSynthesis.speak(u);
+}
+init().catch(e=>{ console.error(e); document.body.insertAdjacentHTML("beforeend",`<p style="padding:16px">The app could not start: ${esc(e.message)}</p>`); });
+</script>
+</body>
+</html>

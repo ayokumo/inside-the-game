@@ -1,0 +1,1 @@
+{"skeleton": "{ev.clock} {ev.player} scores for {ev.team} with a shot. It's now {ev.score}. {ev.team} have {home_shots} shots and hold {home_poss} possession with an xG of {home_xg}.", "notes": []}

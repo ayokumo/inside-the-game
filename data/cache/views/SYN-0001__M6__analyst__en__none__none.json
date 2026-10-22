@@ -1,0 +1,1 @@
+{"skeleton": "At {ev.clock}, {ev.player} completes a goal for {ev.team} by executing a precise shot, adjusting the scoreline to {ev.score}. {ev.team} have registered {home_shots} attempts on goal, maintaining {home_poss} possession, and hold an expected goals metric of {home_xg}.", "notes": []}

@@ -1,0 +1,1 @@
+{"skeleton": "{ev.clock} {ev.player} erzielt f\u00fcr {ev.team} ein Tor mit einem Schuss, der das Ergebnis auf {ev.score} bringt. {ev.team} haben {home_shots} Sch\u00fcsse abgegeben und halten {home_poss} Ballbesitz, mit erwarteten Toren von {home_xg}.", "notes": []}

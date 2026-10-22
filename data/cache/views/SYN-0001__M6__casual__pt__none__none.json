@@ -1,0 +1,1 @@
+{"skeleton": "{ev.clock} {ev.player} marca para {ev.team} com um chute para fazer {ev.score}. {ev.team} realizou {home_shots} chutes e mant\u00e9m {home_poss} de posse, com um total de gols esperados de {home_xg}.", "notes": ["persona output rejected, kept previous wording"]}

@@ -1,0 +1,1 @@
+{"skeleton": "{ev.clock} But! {ev.player} marque pour {ev.team} et les met devant. Ils ont eu {away_shots} tirs avec un total de buts attendus de {away_xg}.", "notes": ["persona output rejected, kept previous wording"]}

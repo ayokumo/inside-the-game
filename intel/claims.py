@@ -220,33 +220,48 @@ def format_value(metric, value, loc="en"):
     return _num(value, nd, loc)
 
 
-def render(match: Match, skeleton: str, verified: dict, loc: str = "en") -> str:
-    """Rebuild final text from the skeleton and verified claims only. Raises if the skeleton breaks the rules."""
+def _sub_text(match, ph, verified, loc):
+    if ph.startswith("player:"):
+        return match.players[ph.split(":", 1)[1]]["name"]
+    if ph.startswith("team:"):
+        return match.home if ph.endswith("home") else match.away
+    cid, _, field = ph.partition(".")
+    v = verified[cid]
+    if field == "player":
+        return v["player"]
+    if field == "team":
+        return v["team"]
+    if field == "clock":
+        return f"{v['clock']}'"
+    if field == "score":
+        h, a = v["score"]
+        return f"{h}:{a}"
+    if v["kind"] == "stat":
+        return format_value(v["metric"], v["value"], loc)
+    if v["kind"] == "threshold":
+        return format_value(v["threshold"], v["level"], loc)
+    raise ValueError(f"claim {cid} of kind {v['kind']} has no printable value; use a field like .player")
+
+
+def render_parts(match: Match, skeleton: str, verified: dict, loc: str = "en") -> list:
+    """Final text as parts [{"text", "claim"}]; `claim` is the id of the verified claim a piece of text came from,
+    so the UI can show a receipt for it. Raises if the skeleton breaks the rules."""
     problems = check_skeleton(skeleton, verified)
     if problems:
         raise ValueError("; ".join(problems))
-
-    def sub(m):
+    parts, pos = [], 0
+    for m in PH.finditer(skeleton):
+        if m.start() > pos:
+            parts.append({"text": skeleton[pos:m.start()], "claim": None})
         ph = m.group(0)[1:-1]
-        if ph.startswith("player:"):
-            return match.players[ph.split(":", 1)[1]]["name"]
-        if ph.startswith("team:"):
-            return match.home if ph.endswith("home") else match.away
-        cid, _, field = ph.partition(".")
-        v = verified[cid]
-        if field == "player":
-            return v["player"]
-        if field == "team":
-            return v["team"]
-        if field == "clock":
-            return f"{v['clock']}'"
-        if field == "score":
-            h, a = v["score"]
-            return f"{h}:{a}"
-        if v["kind"] == "stat":
-            return format_value(v["metric"], v["value"], loc)
-        if v["kind"] == "threshold":
-            return format_value(v["threshold"], v["level"], loc)
-        raise ValueError(f"claim {cid} of kind {v['kind']} has no printable value; use a field like .player")
+        parts.append({"text": _sub_text(match, ph, verified, loc),
+                      "claim": None if ph.startswith(("player:", "team:")) else ph.partition(".")[0]})
+        pos = m.end()
+    if pos < len(skeleton):
+        parts.append({"text": skeleton[pos:], "claim": None})
+    return parts
 
-    return PH.sub(sub, skeleton)
+
+def render(match: Match, skeleton: str, verified: dict, loc: str = "en") -> str:
+    """Rebuild final text from the skeleton and verified claims only. Raises if the skeleton breaks the rules."""
+    return "".join(p["text"] for p in render_parts(match, skeleton, verified, loc))
