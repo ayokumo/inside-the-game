@@ -1,0 +1,646 @@
+{
+  "seed": 3108,
+  "match_context": {
+    "tempo": 0.849,
+    "openness": 1.09
+  },
+  "red_cards": [],
+  "substitutions": [
+    {
+      "t": 3363.9,
+      "team": "Castlemere Athletic",
+      "out": "CAS08",
+      "in": "CAS14",
+      "out_fatigue": 0.273
+    },
+    {
+      "t": 3737.9,
+      "team": "Port Avalon",
+      "out": "PAV06",
+      "in": "PAV15",
+      "out_fatigue": 0.34
+    },
+    {
+      "t": 4089.1,
+      "team": "Castlemere Athletic",
+      "out": "CAS11",
+      "in": "CAS16",
+      "out_fatigue": 0.323
+    },
+    {
+      "t": 4263.0,
+      "team": "Port Avalon",
+      "out": "PAV05",
+      "in": "PAV13",
+      "out_fatigue": 0.373
+    },
+    {
+      "t": 4587.6,
+      "team": "Castlemere Athletic",
+      "out": "CAS09",
+      "in": "CAS15",
+      "out_fatigue": 0.354
+    },
+    {
+      "t": 4855.6,
+      "team": "Port Avalon",
+      "out": "PAV02",
+      "in": "PAV14",
+      "out_fatigue": 0.423
+    }
+  ],
+  "script": [],
+  "fatigue_curve": [
+    {
+      "t": 65,
+      "home": 0.005,
+      "away": 0.005
+    },
+    {
+      "t": 123,
+      "home": 0.009,
+      "away": 0.009
+    },
+    {
+      "t": 195,
+      "home": 0.014,
+      "away": 0.016
+    },
+    {
+      "t": 245,
+      "home": 0.018,
+      "away": 0.02
+    },
+    {
+      "t": 304,
+      "home": 0.022,
+      "away": 0.026
+    },
+    {
+      "t": 394,
+      "home": 0.028,
+      "away": 0.034
+    },
+    {
+      "t": 429,
+      "home": 0.031,
+      "away": 0.038
+    },
+    {
+      "t": 482,
+      "home": 0.035,
+      "away": 0.043
+    },
+    {
+      "t": 542,
+      "home": 0.039,
+      "away": 0.048
+    },
+    {
+      "t": 601,
+      "home": 0.043,
+      "away": 0.054
+    },
+    {
+      "t": 664,
+      "home": 0.048,
+      "away": 0.06
+    },
+    {
+      "t": 721,
+      "home": 0.052,
+      "away": 0.065
+    },
+    {
+      "t": 786,
+      "home": 0.057,
+      "away": 0.071
+    },
+    {
+      "t": 844,
+      "home": 0.061,
+      "away": 0.077
+    },
+    {
+      "t": 901,
+      "home": 0.065,
+      "away": 0.082
+    },
+    {
+      "t": 964,
+      "home": 0.07,
+      "away": 0.087
+    },
+    {
+      "t": 1020,
+      "home": 0.074,
+      "away": 0.091
+    },
+    {
+      "t": 1082,
+      "home": 0.078,
+      "away": 0.095
+    },
+    {
+      "t": 1145,
+      "home": 0.083,
+      "away": 0.1
+    },
+    {
+      "t": 1201,
+      "home": 0.087,
+      "away": 0.104
+    },
+    {
+      "t": 1264,
+      "home": 0.091,
+      "away": 0.108
+    },
+    {
+      "t": 1323,
+      "home": 0.095,
+      "away": 0.113
+    },
+    {
+      "t": 1382,
+      "home": 0.1,
+      "away": 0.117
+    },
+    {
+      "t": 1444,
+      "home": 0.104,
+      "away": 0.121
+    },
+    {
+      "t": 1504,
+      "home": 0.109,
+      "away": 0.126
+    },
+    {
+      "t": 1565,
+      "home": 0.113,
+      "away": 0.13
+    },
+    {
+      "t": 1621,
+      "home": 0.117,
+      "away": 0.134
+    },
+    {
+      "t": 1683,
+      "home": 0.121,
+      "away": 0.139
+    },
+    {
+      "t": 1745,
+      "home": 0.126,
+      "away": 0.143
+    },
+    {
+      "t": 1803,
+      "home": 0.13,
+      "away": 0.147
+    },
+    {
+      "t": 1862,
+      "home": 0.134,
+      "away": 0.151
+    },
+    {
+      "t": 1921,
+      "home": 0.139,
+      "away": 0.156
+    },
+    {
+      "t": 1983,
+      "home": 0.143,
+      "away": 0.16
+    },
+    {
+      "t": 2041,
+      "home": 0.147,
+      "away": 0.164
+    },
+    {
+      "t": 2105,
+      "home": 0.152,
+      "away": 0.169
+    },
+    {
+      "t": 2161,
+      "home": 0.156,
+      "away": 0.173
+    },
+    {
+      "t": 2221,
+      "home": 0.16,
+      "away": 0.177
+    },
+    {
+      "t": 2280,
+      "home": 0.165,
+      "away": 0.182
+    },
+    {
+      "t": 2343,
+      "home": 0.169,
+      "away": 0.186
+    },
+    {
+      "t": 2402,
+      "home": 0.173,
+      "away": 0.19
+    },
+    {
+      "t": 2460,
+      "home": 0.178,
+      "away": 0.195
+    },
+    {
+      "t": 2528,
+      "home": 0.182,
+      "away": 0.2
+    },
+    {
+      "t": 2581,
+      "home": 0.186,
+      "away": 0.203
+    },
+    {
+      "t": 2644,
+      "home": 0.191,
+      "away": 0.208
+    },
+    {
+      "t": 2704,
+      "home": 0.195,
+      "away": 0.212
+    },
+    {
+      "t": 2764,
+      "home": 0.199,
+      "away": 0.217
+    },
+    {
+      "t": 2823,
+      "home": 0.204,
+      "away": 0.221
+    },
+    {
+      "t": 2884,
+      "home": 0.208,
+      "away": 0.225
+    },
+    {
+      "t": 2945,
+      "home": 0.181,
+      "away": 0.195
+    },
+    {
+      "t": 3005,
+      "home": 0.185,
+      "away": 0.2
+    },
+    {
+      "t": 3063,
+      "home": 0.189,
+      "away": 0.204
+    },
+    {
+      "t": 3126,
+      "home": 0.194,
+      "away": 0.208
+    },
+    {
+      "t": 3182,
+      "home": 0.198,
+      "away": 0.212
+    },
+    {
+      "t": 3242,
+      "home": 0.202,
+      "away": 0.217
+    },
+    {
+      "t": 3302,
+      "home": 0.206,
+      "away": 0.221
+    },
+    {
+      "t": 3362,
+      "home": 0.211,
+      "away": 0.225
+    },
+    {
+      "t": 3420,
+      "home": 0.187,
+      "away": 0.23
+    },
+    {
+      "t": 3483,
+      "home": 0.192,
+      "away": 0.234
+    },
+    {
+      "t": 3544,
+      "home": 0.196,
+      "away": 0.239
+    },
+    {
+      "t": 3627,
+      "home": 0.202,
+      "away": 0.245
+    },
+    {
+      "t": 3665,
+      "home": 0.205,
+      "away": 0.247
+    },
+    {
+      "t": 3722,
+      "home": 0.209,
+      "away": 0.251
+    },
+    {
+      "t": 3783,
+      "home": 0.213,
+      "away": 0.222
+    },
+    {
+      "t": 3848,
+      "home": 0.217,
+      "away": 0.226
+    },
+    {
+      "t": 3918,
+      "home": 0.222,
+      "away": 0.231
+    },
+    {
+      "t": 3965,
+      "home": 0.225,
+      "away": 0.235
+    },
+    {
+      "t": 4021,
+      "home": 0.229,
+      "away": 0.239
+    },
+    {
+      "t": 4081,
+      "home": 0.234,
+      "away": 0.243
+    },
+    {
+      "t": 4141,
+      "home": 0.205,
+      "away": 0.247
+    },
+    {
+      "t": 4201,
+      "home": 0.209,
+      "away": 0.251
+    },
+    {
+      "t": 4263,
+      "home": 0.214,
+      "away": 0.218
+    },
+    {
+      "t": 4320,
+      "home": 0.217,
+      "away": 0.222
+    },
+    {
+      "t": 4387,
+      "home": 0.222,
+      "away": 0.226
+    },
+    {
+      "t": 4442,
+      "home": 0.226,
+      "away": 0.23
+    },
+    {
+      "t": 4505,
+      "home": 0.23,
+      "away": 0.234
+    },
+    {
+      "t": 4561,
+      "home": 0.234,
+      "away": 0.238
+    },
+    {
+      "t": 4622,
+      "home": 0.203,
+      "away": 0.242
+    },
+    {
+      "t": 4684,
+      "home": 0.207,
+      "away": 0.246
+    },
+    {
+      "t": 4742,
+      "home": 0.211,
+      "away": 0.25
+    },
+    {
+      "t": 4801,
+      "home": 0.214,
+      "away": 0.254
+    },
+    {
+      "t": 4864,
+      "home": 0.219,
+      "away": 0.216
+    },
+    {
+      "t": 4925,
+      "home": 0.223,
+      "away": 0.219
+    },
+    {
+      "t": 4982,
+      "home": 0.226,
+      "away": 0.223
+    },
+    {
+      "t": 5042,
+      "home": 0.23,
+      "away": 0.227
+    },
+    {
+      "t": 5101,
+      "home": 0.234,
+      "away": 0.231
+    },
+    {
+      "t": 5165,
+      "home": 0.238,
+      "away": 0.235
+    },
+    {
+      "t": 5222,
+      "home": 0.242,
+      "away": 0.239
+    },
+    {
+      "t": 5281,
+      "home": 0.246,
+      "away": 0.242
+    },
+    {
+      "t": 5342,
+      "home": 0.25,
+      "away": 0.246
+    },
+    {
+      "t": 5405,
+      "home": 0.254,
+      "away": 0.25
+    },
+    {
+      "t": 5464,
+      "home": 0.258,
+      "away": 0.254
+    },
+    {
+      "t": 5522,
+      "home": 0.262,
+      "away": 0.258
+    },
+    {
+      "t": 5583,
+      "home": 0.266,
+      "away": 0.262
+    },
+    {
+      "t": 5644,
+      "home": 0.27,
+      "away": 0.266
+    },
+    {
+      "t": 5703,
+      "home": 0.274,
+      "away": 0.27
+    },
+    {
+      "t": 5761,
+      "home": 0.278,
+      "away": 0.273
+    },
+    {
+      "t": 5823,
+      "home": 0.282,
+      "away": 0.277
+    },
+    {
+      "t": 5882,
+      "home": 0.286,
+      "away": 0.281
+    }
+  ],
+  "goals": [
+    {
+      "t": 360.1,
+      "team": "Port Avalon",
+      "scorer": "PAV11",
+      "xg": 0.285,
+      "windows_active": [
+        "W1"
+      ],
+      "score_before": [
+        0,
+        0
+      ]
+    },
+    {
+      "t": 2070.5,
+      "team": "Castlemere Athletic",
+      "scorer": "CAS11",
+      "xg": 0.64,
+      "windows_active": [],
+      "score_before": [
+        0,
+        1
+      ]
+    },
+    {
+      "t": 3878.4,
+      "team": "Castlemere Athletic",
+      "scorer": "CAS10",
+      "xg": 0.397,
+      "windows_active": [],
+      "score_before": [
+        1,
+        1
+      ]
+    },
+    {
+      "t": 3933.8,
+      "team": "Port Avalon",
+      "scorer": "PAV11",
+      "xg": 0.136,
+      "windows_active": [
+        "W2"
+      ],
+      "score_before": [
+        2,
+        1
+      ]
+    },
+    {
+      "t": 5903.9,
+      "team": "Port Avalon",
+      "scorer": "PAV10",
+      "xg": 0.14,
+      "windows_active": [],
+      "score_before": [
+        2,
+        2
+      ]
+    }
+  ],
+  "tactical_windows": [
+    {
+      "id": "W1",
+      "team": "Port Avalon",
+      "side": "away",
+      "mode": "high_press",
+      "reason": "style_shift",
+      "start_t": 123.3,
+      "end_t": 900.8,
+      "measured": {
+        "press_intensity_in": 0.158,
+        "press_intensity_out": 0.054,
+        "shots_per_min_in": 0.54,
+        "shots_per_min_out": 0.116,
+        "pass_completion_in": 0.803,
+        "pass_completion_out": 0.853,
+        "opp_pass_completion_in": 0.704,
+        "opp_pass_completion_out": 0.757
+      }
+    },
+    {
+      "id": "W2",
+      "team": "Port Avalon",
+      "side": "away",
+      "mode": "all_out_attack",
+      "reason": "chasing_game",
+      "start_t": 3918.0,
+      "end_t": 3964.7,
+      "measured": {
+        "press_intensity_in": null,
+        "press_intensity_out": 0.068,
+        "shots_per_min_in": 1.0,
+        "shots_per_min_out": 0.163,
+        "pass_completion_in": 1.0,
+        "pass_completion_out": 0.847,
+        "opp_pass_completion_in": null,
+        "opp_pass_completion_out": 0.75
+      }
+    }
+  ]
+}

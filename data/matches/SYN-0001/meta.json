@@ -1,0 +1,222 @@
+{
+  "match_id": "SYN-0001",
+  "seed": 2006,
+  "synthetic": true,
+  "pitch": {
+    "length_m": 105.0,
+    "width_m": 68.0
+  },
+  "coordinate_system": "absolute metres; home attacks +x in period 1, -x in period 2",
+  "kickoff_local": "2026-08-15T15:00:00",
+  "home": {
+    "club_id": "NBR",
+    "name": "Northbridge FC",
+    "formation": "4-3-3",
+    "players": [
+      {
+        "player_id": "NBR01",
+        "name": "A. Volkov",
+        "group": "GK",
+        "started": true
+      },
+      {
+        "player_id": "NBR02",
+        "name": "A. Dlamini",
+        "group": "DEF",
+        "started": true
+      },
+      {
+        "player_id": "NBR03",
+        "name": "N. Takahashi",
+        "group": "DEF",
+        "started": true
+      },
+      {
+        "player_id": "NBR04",
+        "name": "A. Novak",
+        "group": "DEF",
+        "started": true
+      },
+      {
+        "player_id": "NBR05",
+        "name": "D. Eze",
+        "group": "DEF",
+        "started": true
+      },
+      {
+        "player_id": "NBR06",
+        "name": "E. Hartmann",
+        "group": "MID",
+        "started": true
+      },
+      {
+        "player_id": "NBR07",
+        "name": "A. Okonkwo",
+        "group": "MID",
+        "started": true
+      },
+      {
+        "player_id": "NBR08",
+        "name": "N. Nwosu",
+        "group": "MID",
+        "started": true
+      },
+      {
+        "player_id": "NBR09",
+        "name": "E. Dimitrov",
+        "group": "FWD",
+        "started": true
+      },
+      {
+        "player_id": "NBR10",
+        "name": "C. Fofana",
+        "group": "FWD",
+        "started": true
+      },
+      {
+        "player_id": "NBR11",
+        "name": "Y. Chukwu",
+        "group": "FWD",
+        "started": true
+      },
+      {
+        "player_id": "NBR12",
+        "name": "E. Idowu",
+        "group": "GK",
+        "started": false
+      },
+      {
+        "player_id": "NBR13",
+        "name": "F. Osei",
+        "group": "DEF",
+        "started": false
+      },
+      {
+        "player_id": "NBR14",
+        "name": "O. Fischer",
+        "group": "MID",
+        "started": false
+      },
+      {
+        "player_id": "NBR15",
+        "name": "N. Halvorsen",
+        "group": "MID",
+        "started": false
+      },
+      {
+        "player_id": "NBR16",
+        "name": "C. Zielinski",
+        "group": "FWD",
+        "started": false
+      }
+    ]
+  },
+  "away": {
+    "club_id": "HLW",
+    "name": "Harlow United",
+    "formation": "4-4-2",
+    "players": [
+      {
+        "player_id": "HLW01",
+        "name": "C. Eze",
+        "group": "GK",
+        "started": true
+      },
+      {
+        "player_id": "HLW02",
+        "name": "M. Ibarra",
+        "group": "DEF",
+        "started": true
+      },
+      {
+        "player_id": "HLW03",
+        "name": "G. Yilmaz",
+        "group": "DEF",
+        "started": true
+      },
+      {
+        "player_id": "HLW04",
+        "name": "T. Quaye",
+        "group": "DEF",
+        "started": true
+      },
+      {
+        "player_id": "HLW05",
+        "name": "P. Benitez",
+        "group": "DEF",
+        "started": true
+      },
+      {
+        "player_id": "HLW06",
+        "name": "H. Haddad",
+        "group": "MID",
+        "started": true
+      },
+      {
+        "player_id": "HLW07",
+        "name": "C. Okonkwo",
+        "group": "MID",
+        "started": true
+      },
+      {
+        "player_id": "HLW08",
+        "name": "G. Vidal",
+        "group": "MID",
+        "started": true
+      },
+      {
+        "player_id": "HLW09",
+        "name": "T. Ostrowski",
+        "group": "MID",
+        "started": true
+      },
+      {
+        "player_id": "HLW10",
+        "name": "A. Laurent",
+        "group": "FWD",
+        "started": true
+      },
+      {
+        "player_id": "HLW11",
+        "name": "Y. Dlamini",
+        "group": "FWD",
+        "started": true
+      },
+      {
+        "player_id": "HLW12",
+        "name": "K. Costa",
+        "group": "GK",
+        "started": false
+      },
+      {
+        "player_id": "HLW13",
+        "name": "B. Dimitrov",
+        "group": "DEF",
+        "started": false
+      },
+      {
+        "player_id": "HLW14",
+        "name": "H. Reyes",
+        "group": "MID",
+        "started": false
+      },
+      {
+        "player_id": "HLW15",
+        "name": "D. Camara",
+        "group": "MID",
+        "started": false
+      },
+      {
+        "player_id": "HLW16",
+        "name": "N. Santoro",
+        "group": "FWD",
+        "started": false
+      }
+    ]
+  },
+  "final_score": {
+    "home": 1,
+    "away": 2
+  },
+  "duration_s": 5644.8
+}

@@ -1,0 +1,222 @@
+{
+  "match_id": "SYN-0002",
+  "seed": 3108,
+  "synthetic": true,
+  "pitch": {
+    "length_m": 105.0,
+    "width_m": 68.0
+  },
+  "coordinate_system": "absolute metres; home attacks +x in period 1, -x in period 2",
+  "kickoff_local": "2026-08-15T15:00:00",
+  "home": {
+    "club_id": "CAS",
+    "name": "Castlemere Athletic",
+    "formation": "4-3-3",
+    "players": [
+      {
+        "player_id": "CAS01",
+        "name": "G. Dimitrov",
+        "group": "GK",
+        "started": true
+      },
+      {
+        "player_id": "CAS02",
+        "name": "A. Mensah",
+        "group": "DEF",
+        "started": true
+      },
+      {
+        "player_id": "CAS03",
+        "name": "M. Halvorsen",
+        "group": "DEF",
+        "started": true
+      },
+      {
+        "player_id": "CAS04",
+        "name": "S. Duarte",
+        "group": "DEF",
+        "started": true
+      },
+      {
+        "player_id": "CAS05",
+        "name": "E. Bianchi",
+        "group": "DEF",
+        "started": true
+      },
+      {
+        "player_id": "CAS06",
+        "name": "J. Reyes",
+        "group": "MID",
+        "started": true
+      },
+      {
+        "player_id": "CAS07",
+        "name": "P. Hartmann",
+        "group": "MID",
+        "started": true
+      },
+      {
+        "player_id": "CAS08",
+        "name": "W. Castellano",
+        "group": "MID",
+        "started": true
+      },
+      {
+        "player_id": "CAS09",
+        "name": "B. Mercier",
+        "group": "FWD",
+        "started": true
+      },
+      {
+        "player_id": "CAS10",
+        "name": "J. Salazar",
+        "group": "FWD",
+        "started": true
+      },
+      {
+        "player_id": "CAS11",
+        "name": "H. Marchetti",
+        "group": "FWD",
+        "started": true
+      },
+      {
+        "player_id": "CAS12",
+        "name": "D. Bergstrom",
+        "group": "GK",
+        "started": false
+      },
+      {
+        "player_id": "CAS13",
+        "name": "Y. Novak",
+        "group": "DEF",
+        "started": false
+      },
+      {
+        "player_id": "CAS14",
+        "name": "R. Boateng",
+        "group": "MID",
+        "started": false
+      },
+      {
+        "player_id": "CAS15",
+        "name": "Y. Rossi",
+        "group": "MID",
+        "started": false
+      },
+      {
+        "player_id": "CAS16",
+        "name": "G. Osei",
+        "group": "FWD",
+        "started": false
+      }
+    ]
+  },
+  "away": {
+    "club_id": "PAV",
+    "name": "Port Avalon",
+    "formation": "4-4-2",
+    "players": [
+      {
+        "player_id": "PAV01",
+        "name": "O. Abara",
+        "group": "GK",
+        "started": true
+      },
+      {
+        "player_id": "PAV02",
+        "name": "N. Yilmaz",
+        "group": "DEF",
+        "started": true
+      },
+      {
+        "player_id": "PAV03",
+        "name": "P. Fischer",
+        "group": "DEF",
+        "started": true
+      },
+      {
+        "player_id": "PAV04",
+        "name": "D. Vidal",
+        "group": "DEF",
+        "started": true
+      },
+      {
+        "player_id": "PAV05",
+        "name": "C. Boateng",
+        "group": "DEF",
+        "started": true
+      },
+      {
+        "player_id": "PAV06",
+        "name": "P. Nwosu",
+        "group": "MID",
+        "started": true
+      },
+      {
+        "player_id": "PAV07",
+        "name": "J. Duarte",
+        "group": "MID",
+        "started": true
+      },
+      {
+        "player_id": "PAV08",
+        "name": "Y. Lindqvist",
+        "group": "MID",
+        "started": true
+      },
+      {
+        "player_id": "PAV09",
+        "name": "G. Reyes",
+        "group": "MID",
+        "started": true
+      },
+      {
+        "player_id": "PAV10",
+        "name": "T. Mbeki",
+        "group": "FWD",
+        "started": true
+      },
+      {
+        "player_id": "PAV11",
+        "name": "D. Volkov",
+        "group": "FWD",
+        "started": true
+      },
+      {
+        "player_id": "PAV12",
+        "name": "M. Osei",
+        "group": "GK",
+        "started": false
+      },
+      {
+        "player_id": "PAV13",
+        "name": "E. Hartmann",
+        "group": "DEF",
+        "started": false
+      },
+      {
+        "player_id": "PAV14",
+        "name": "C. Obi",
+        "group": "MID",
+        "started": false
+      },
+      {
+        "player_id": "PAV15",
+        "name": "N. Ferreira",
+        "group": "MID",
+        "started": false
+      },
+      {
+        "player_id": "PAV16",
+        "name": "D. Novak",
+        "group": "FWD",
+        "started": false
+      }
+    ]
+  },
+  "final_score": {
+    "home": 2,
+    "away": 3
+  },
+  "duration_s": 5944.7
+}

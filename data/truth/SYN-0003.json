@@ -1,0 +1,751 @@
+{
+  "seed": 4094,
+  "match_context": {
+    "tempo": 1.052,
+    "openness": 1.053
+  },
+  "red_cards": [],
+  "substitutions": [
+    {
+      "t": 3251.8,
+      "team": "Port Avalon",
+      "out": "PAV06",
+      "in": "PAV15",
+      "out_fatigue": 0.272
+    },
+    {
+      "t": 3251.8,
+      "team": "Northbridge FC",
+      "out": "NBR06",
+      "in": "NBR14",
+      "out_fatigue": 0.287
+    },
+    {
+      "t": 3920.2,
+      "team": "Port Avalon",
+      "out": "PAV05",
+      "in": "PAV13",
+      "out_fatigue": 0.322
+    },
+    {
+      "t": 3982.6,
+      "team": "Northbridge FC",
+      "out": "NBR09",
+      "in": "NBR16",
+      "out_fatigue": 0.302
+    },
+    {
+      "t": 4541.0,
+      "team": "Port Avalon",
+      "out": "PAV02",
+      "in": "PAV16",
+      "out_fatigue": 0.386
+    },
+    {
+      "t": 4878.3,
+      "team": "Northbridge FC",
+      "out": "NBR07",
+      "in": "NBR15",
+      "out_fatigue": 0.368
+    }
+  ],
+  "script": [],
+  "fatigue_curve": [
+    {
+      "t": 61,
+      "home": 0.004,
+      "away": 0.004
+    },
+    {
+      "t": 120,
+      "home": 0.009,
+      "away": 0.008
+    },
+    {
+      "t": 184,
+      "home": 0.013,
+      "away": 0.012
+    },
+    {
+      "t": 244,
+      "home": 0.018,
+      "away": 0.016
+    },
+    {
+      "t": 316,
+      "home": 0.023,
+      "away": 0.021
+    },
+    {
+      "t": 363,
+      "home": 0.026,
+      "away": 0.024
+    },
+    {
+      "t": 423,
+      "home": 0.031,
+      "away": 0.028
+    },
+    {
+      "t": 487,
+      "home": 0.035,
+      "away": 0.033
+    },
+    {
+      "t": 542,
+      "home": 0.039,
+      "away": 0.036
+    },
+    {
+      "t": 603,
+      "home": 0.044,
+      "away": 0.04
+    },
+    {
+      "t": 664,
+      "home": 0.048,
+      "away": 0.044
+    },
+    {
+      "t": 723,
+      "home": 0.052,
+      "away": 0.048
+    },
+    {
+      "t": 781,
+      "home": 0.056,
+      "away": 0.052
+    },
+    {
+      "t": 842,
+      "home": 0.061,
+      "away": 0.056
+    },
+    {
+      "t": 904,
+      "home": 0.065,
+      "away": 0.061
+    },
+    {
+      "t": 974,
+      "home": 0.07,
+      "away": 0.065
+    },
+    {
+      "t": 1025,
+      "home": 0.074,
+      "away": 0.069
+    },
+    {
+      "t": 1086,
+      "home": 0.078,
+      "away": 0.073
+    },
+    {
+      "t": 1145,
+      "home": 0.083,
+      "away": 0.077
+    },
+    {
+      "t": 1204,
+      "home": 0.087,
+      "away": 0.081
+    },
+    {
+      "t": 1269,
+      "home": 0.092,
+      "away": 0.085
+    },
+    {
+      "t": 1322,
+      "home": 0.096,
+      "away": 0.089
+    },
+    {
+      "t": 1381,
+      "home": 0.1,
+      "away": 0.092
+    },
+    {
+      "t": 1444,
+      "home": 0.104,
+      "away": 0.097
+    },
+    {
+      "t": 1503,
+      "home": 0.109,
+      "away": 0.102
+    },
+    {
+      "t": 1563,
+      "home": 0.113,
+      "away": 0.107
+    },
+    {
+      "t": 1621,
+      "home": 0.117,
+      "away": 0.112
+    },
+    {
+      "t": 1686,
+      "home": 0.122,
+      "away": 0.118
+    },
+    {
+      "t": 1745,
+      "home": 0.126,
+      "away": 0.123
+    },
+    {
+      "t": 1802,
+      "home": 0.13,
+      "away": 0.128
+    },
+    {
+      "t": 1860,
+      "home": 0.134,
+      "away": 0.133
+    },
+    {
+      "t": 1927,
+      "home": 0.139,
+      "away": 0.139
+    },
+    {
+      "t": 2008,
+      "home": 0.145,
+      "away": 0.146
+    },
+    {
+      "t": 2049,
+      "home": 0.148,
+      "away": 0.149
+    },
+    {
+      "t": 2103,
+      "home": 0.152,
+      "away": 0.152
+    },
+    {
+      "t": 2161,
+      "home": 0.156,
+      "away": 0.156
+    },
+    {
+      "t": 2227,
+      "home": 0.161,
+      "away": 0.16
+    },
+    {
+      "t": 2284,
+      "home": 0.165,
+      "away": 0.164
+    },
+    {
+      "t": 2341,
+      "home": 0.169,
+      "away": 0.168
+    },
+    {
+      "t": 2406,
+      "home": 0.174,
+      "away": 0.172
+    },
+    {
+      "t": 2461,
+      "home": 0.178,
+      "away": 0.176
+    },
+    {
+      "t": 2523,
+      "home": 0.182,
+      "away": 0.18
+    },
+    {
+      "t": 2587,
+      "home": 0.187,
+      "away": 0.185
+    },
+    {
+      "t": 2640,
+      "home": 0.19,
+      "away": 0.188
+    },
+    {
+      "t": 2705,
+      "home": 0.194,
+      "away": 0.192
+    },
+    {
+      "t": 2763,
+      "home": 0.198,
+      "away": 0.196
+    },
+    {
+      "t": 2822,
+      "home": 0.171,
+      "away": 0.17
+    },
+    {
+      "t": 2881,
+      "home": 0.175,
+      "away": 0.174
+    },
+    {
+      "t": 2942,
+      "home": 0.18,
+      "away": 0.178
+    },
+    {
+      "t": 3003,
+      "home": 0.184,
+      "away": 0.182
+    },
+    {
+      "t": 3061,
+      "home": 0.188,
+      "away": 0.186
+    },
+    {
+      "t": 3121,
+      "home": 0.193,
+      "away": 0.19
+    },
+    {
+      "t": 3182,
+      "home": 0.197,
+      "away": 0.194
+    },
+    {
+      "t": 3243,
+      "home": 0.202,
+      "away": 0.198
+    },
+    {
+      "t": 3303,
+      "home": 0.179,
+      "away": 0.174
+    },
+    {
+      "t": 3363,
+      "home": 0.183,
+      "away": 0.178
+    },
+    {
+      "t": 3422,
+      "home": 0.187,
+      "away": 0.183
+    },
+    {
+      "t": 3485,
+      "home": 0.191,
+      "away": 0.188
+    },
+    {
+      "t": 3542,
+      "home": 0.195,
+      "away": 0.193
+    },
+    {
+      "t": 3605,
+      "home": 0.199,
+      "away": 0.198
+    },
+    {
+      "t": 3663,
+      "home": 0.203,
+      "away": 0.203
+    },
+    {
+      "t": 3748,
+      "home": 0.209,
+      "away": 0.21
+    },
+    {
+      "t": 3782,
+      "home": 0.211,
+      "away": 0.213
+    },
+    {
+      "t": 3843,
+      "home": 0.216,
+      "away": 0.218
+    },
+    {
+      "t": 3903,
+      "home": 0.22,
+      "away": 0.223
+    },
+    {
+      "t": 3963,
+      "home": 0.192,
+      "away": 0.228
+    },
+    {
+      "t": 4024,
+      "home": 0.197,
+      "away": 0.203
+    },
+    {
+      "t": 4082,
+      "home": 0.202,
+      "away": 0.207
+    },
+    {
+      "t": 4141,
+      "home": 0.207,
+      "away": 0.211
+    },
+    {
+      "t": 4202,
+      "home": 0.211,
+      "away": 0.215
+    },
+    {
+      "t": 4262,
+      "home": 0.216,
+      "away": 0.219
+    },
+    {
+      "t": 4322,
+      "home": 0.221,
+      "away": 0.222
+    },
+    {
+      "t": 4385,
+      "home": 0.226,
+      "away": 0.227
+    },
+    {
+      "t": 4443,
+      "home": 0.231,
+      "away": 0.23
+    },
+    {
+      "t": 4501,
+      "home": 0.235,
+      "away": 0.234
+    },
+    {
+      "t": 4566,
+      "home": 0.202,
+      "away": 0.238
+    },
+    {
+      "t": 4621,
+      "home": 0.206,
+      "away": 0.242
+    },
+    {
+      "t": 4681,
+      "home": 0.211,
+      "away": 0.246
+    },
+    {
+      "t": 4743,
+      "home": 0.216,
+      "away": 0.25
+    },
+    {
+      "t": 4803,
+      "home": 0.22,
+      "away": 0.254
+    },
+    {
+      "t": 4866,
+      "home": 0.225,
+      "away": 0.258
+    },
+    {
+      "t": 4925,
+      "home": 0.23,
+      "away": 0.225
+    },
+    {
+      "t": 4984,
+      "home": 0.235,
+      "away": 0.228
+    },
+    {
+      "t": 5046,
+      "home": 0.239,
+      "away": 0.232
+    },
+    {
+      "t": 5103,
+      "home": 0.244,
+      "away": 0.236
+    },
+    {
+      "t": 5161,
+      "home": 0.248,
+      "away": 0.239
+    },
+    {
+      "t": 5224,
+      "home": 0.253,
+      "away": 0.243
+    },
+    {
+      "t": 5282,
+      "home": 0.258,
+      "away": 0.246
+    },
+    {
+      "t": 5343,
+      "home": 0.263,
+      "away": 0.249
+    },
+    {
+      "t": 5405,
+      "home": 0.267,
+      "away": 0.253
+    },
+    {
+      "t": 5465,
+      "home": 0.27,
+      "away": 0.256
+    },
+    {
+      "t": 5523,
+      "home": 0.274,
+      "away": 0.259
+    },
+    {
+      "t": 5585,
+      "home": 0.278,
+      "away": 0.263
+    },
+    {
+      "t": 5642,
+      "home": 0.282,
+      "away": 0.266
+    },
+    {
+      "t": 5706,
+      "home": 0.286,
+      "away": 0.269
+    },
+    {
+      "t": 5779,
+      "home": 0.291,
+      "away": 0.273
+    },
+    {
+      "t": 5821,
+      "home": 0.294,
+      "away": 0.275
+    },
+    {
+      "t": 5886,
+      "home": 0.297,
+      "away": 0.279
+    }
+  ],
+  "goals": [
+    {
+      "t": 854.0,
+      "team": "Port Avalon",
+      "scorer": "PAV08",
+      "xg": 0.067,
+      "windows_active": [],
+      "score_before": [
+        0,
+        0
+      ]
+    },
+    {
+      "t": 1231.0,
+      "team": "Northbridge FC",
+      "scorer": "NBR10",
+      "xg": 0.071,
+      "windows_active": [],
+      "score_before": [
+        1,
+        0
+      ]
+    },
+    {
+      "t": 1576.0,
+      "team": "Northbridge FC",
+      "scorer": "NBR10",
+      "xg": 0.171,
+      "windows_active": [
+        "W1"
+      ],
+      "score_before": [
+        1,
+        1
+      ]
+    },
+    {
+      "t": 1963.7,
+      "team": "Northbridge FC",
+      "scorer": "NBR10",
+      "xg": 0.393,
+      "windows_active": [
+        "W1"
+      ],
+      "score_before": [
+        1,
+        2
+      ]
+    },
+    {
+      "t": 4990.7,
+      "team": "Port Avalon",
+      "scorer": "PAV11",
+      "xg": 0.507,
+      "windows_active": [
+        "W4"
+      ],
+      "score_before": [
+        1,
+        3
+      ]
+    },
+    {
+      "t": 5283.0,
+      "team": "Port Avalon",
+      "scorer": "PAV10",
+      "xg": 0.046,
+      "windows_active": [
+        "W4",
+        "W5"
+      ],
+      "score_before": [
+        2,
+        3
+      ]
+    },
+    {
+      "t": 5730.0,
+      "team": "Port Avalon",
+      "scorer": "PAV11",
+      "xg": 0.129,
+      "windows_active": [
+        "W5"
+      ],
+      "score_before": [
+        3,
+        3
+      ]
+    }
+  ],
+  "tactical_windows": [
+    {
+      "id": "W1",
+      "team": "Northbridge FC",
+      "side": "away",
+      "mode": "high_press",
+      "reason": "style_shift",
+      "start_t": 1443.6,
+      "end_t": 2007.8,
+      "measured": {
+        "press_intensity_in": 0.206,
+        "press_intensity_out": 0.097,
+        "shots_per_min_in": 0.213,
+        "shots_per_min_out": 0.09,
+        "pass_completion_in": 0.818,
+        "pass_completion_out": 0.821,
+        "opp_pass_completion_in": 0.706,
+        "opp_pass_completion_out": 0.842
+      }
+    },
+    {
+      "id": "W2",
+      "team": "Port Avalon",
+      "side": "home",
+      "mode": "low_block",
+      "reason": "style_shift",
+      "start_t": 2586.8,
+      "end_t": 2822.4,
+      "measured": {
+        "press_intensity_in": 0.087,
+        "press_intensity_out": 0.112,
+        "shots_per_min_in": 0.509,
+        "shots_per_min_out": 0.18,
+        "pass_completion_in": 0.562,
+        "pass_completion_out": 0.842,
+        "opp_pass_completion_in": 0.609,
+        "opp_pass_completion_out": 0.832
+      }
+    },
+    {
+      "id": "W3",
+      "team": "Northbridge FC",
+      "side": "away",
+      "mode": "high_press",
+      "reason": "style_shift",
+      "start_t": 3363.4,
+      "end_t": 4024.5,
+      "measured": {
+        "press_intensity_in": 0.188,
+        "press_intensity_out": 0.091,
+        "shots_per_min_in": 0.0,
+        "shots_per_min_out": 0.114,
+        "pass_completion_in": 0.667,
+        "pass_completion_out": 0.833,
+        "opp_pass_completion_in": 0.881,
+        "opp_pass_completion_out": 0.823
+      }
+    },
+    {
+      "id": "W4",
+      "team": "Port Avalon",
+      "side": "home",
+      "mode": "all_out_attack",
+      "reason": "chasing_game",
+      "start_t": 3902.7,
+      "end_t": 5343.3,
+      "measured": {
+        "press_intensity_in": 0.127,
+        "press_intensity_out": 0.105,
+        "shots_per_min_in": 0.458,
+        "shots_per_min_out": 0.108,
+        "pass_completion_in": 0.847,
+        "pass_completion_out": 0.828,
+        "opp_pass_completion_in": 0.819,
+        "opp_pass_completion_out": 0.821
+      }
+    },
+    {
+      "id": "W5",
+      "team": "Northbridge FC",
+      "side": "away",
+      "mode": "low_block",
+      "reason": "protecting_lead",
+      "start_t": 5103.3,
+      "end_t": 5904.3,
+      "measured": {
+        "press_intensity_in": 0.028,
+        "press_intensity_out": 0.12,
+        "shots_per_min_in": 0.0,
+        "shots_per_min_out": 0.118,
+        "pass_completion_in": 0.787,
+        "pass_completion_out": 0.824,
+        "opp_pass_completion_in": 0.884,
+        "opp_pass_completion_out": 0.822
+      }
+    },
+    {
+      "id": "W6",
+      "team": "Port Avalon",
+      "side": "home",
+      "mode": "low_block",
+      "reason": "protecting_lead",
+      "start_t": 5820.5,
+      "end_t": 5904.3,
+      "measured": {
+        "press_intensity_in": 0.0,
+        "press_intensity_out": 0.112,
+        "shots_per_min_in": 0.0,
+        "shots_per_min_out": 0.196,
+        "pass_completion_in": 1.0,
+        "pass_completion_out": 0.826,
+        "opp_pass_completion_in": 0.5,
+        "opp_pass_completion_out": 0.822
+      }
+    }
+  ]
+}

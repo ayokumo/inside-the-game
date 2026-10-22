@@ -1,0 +1,222 @@
+{
+  "match_id": "SYN-0003",
+  "seed": 4094,
+  "synthetic": true,
+  "pitch": {
+    "length_m": 105.0,
+    "width_m": 68.0
+  },
+  "coordinate_system": "absolute metres; home attacks +x in period 1, -x in period 2",
+  "kickoff_local": "2026-08-15T15:00:00",
+  "home": {
+    "club_id": "PAV",
+    "name": "Port Avalon",
+    "formation": "4-4-2",
+    "players": [
+      {
+        "player_id": "PAV01",
+        "name": "O. Abara",
+        "group": "GK",
+        "started": true
+      },
+      {
+        "player_id": "PAV02",
+        "name": "N. Yilmaz",
+        "group": "DEF",
+        "started": true
+      },
+      {
+        "player_id": "PAV03",
+        "name": "P. Fischer",
+        "group": "DEF",
+        "started": true
+      },
+      {
+        "player_id": "PAV04",
+        "name": "D. Vidal",
+        "group": "DEF",
+        "started": true
+      },
+      {
+        "player_id": "PAV05",
+        "name": "C. Boateng",
+        "group": "DEF",
+        "started": true
+      },
+      {
+        "player_id": "PAV06",
+        "name": "P. Nwosu",
+        "group": "MID",
+        "started": true
+      },
+      {
+        "player_id": "PAV07",
+        "name": "J. Duarte",
+        "group": "MID",
+        "started": true
+      },
+      {
+        "player_id": "PAV08",
+        "name": "Y. Lindqvist",
+        "group": "MID",
+        "started": true
+      },
+      {
+        "player_id": "PAV09",
+        "name": "G. Reyes",
+        "group": "MID",
+        "started": true
+      },
+      {
+        "player_id": "PAV10",
+        "name": "T. Mbeki",
+        "group": "FWD",
+        "started": true
+      },
+      {
+        "player_id": "PAV11",
+        "name": "D. Volkov",
+        "group": "FWD",
+        "started": true
+      },
+      {
+        "player_id": "PAV12",
+        "name": "M. Osei",
+        "group": "GK",
+        "started": false
+      },
+      {
+        "player_id": "PAV13",
+        "name": "E. Hartmann",
+        "group": "DEF",
+        "started": false
+      },
+      {
+        "player_id": "PAV14",
+        "name": "C. Obi",
+        "group": "MID",
+        "started": false
+      },
+      {
+        "player_id": "PAV15",
+        "name": "N. Ferreira",
+        "group": "MID",
+        "started": false
+      },
+      {
+        "player_id": "PAV16",
+        "name": "D. Novak",
+        "group": "FWD",
+        "started": false
+      }
+    ]
+  },
+  "away": {
+    "club_id": "NBR",
+    "name": "Northbridge FC",
+    "formation": "4-3-3",
+    "players": [
+      {
+        "player_id": "NBR01",
+        "name": "A. Volkov",
+        "group": "GK",
+        "started": true
+      },
+      {
+        "player_id": "NBR02",
+        "name": "A. Dlamini",
+        "group": "DEF",
+        "started": true
+      },
+      {
+        "player_id": "NBR03",
+        "name": "N. Takahashi",
+        "group": "DEF",
+        "started": true
+      },
+      {
+        "player_id": "NBR04",
+        "name": "A. Novak",
+        "group": "DEF",
+        "started": true
+      },
+      {
+        "player_id": "NBR05",
+        "name": "D. Eze",
+        "group": "DEF",
+        "started": true
+      },
+      {
+        "player_id": "NBR06",
+        "name": "E. Hartmann",
+        "group": "MID",
+        "started": true
+      },
+      {
+        "player_id": "NBR07",
+        "name": "A. Okonkwo",
+        "group": "MID",
+        "started": true
+      },
+      {
+        "player_id": "NBR08",
+        "name": "N. Nwosu",
+        "group": "MID",
+        "started": true
+      },
+      {
+        "player_id": "NBR09",
+        "name": "E. Dimitrov",
+        "group": "FWD",
+        "started": true
+      },
+      {
+        "player_id": "NBR10",
+        "name": "C. Fofana",
+        "group": "FWD",
+        "started": true
+      },
+      {
+        "player_id": "NBR11",
+        "name": "Y. Chukwu",
+        "group": "FWD",
+        "started": true
+      },
+      {
+        "player_id": "NBR12",
+        "name": "E. Idowu",
+        "group": "GK",
+        "started": false
+      },
+      {
+        "player_id": "NBR13",
+        "name": "F. Osei",
+        "group": "DEF",
+        "started": false
+      },
+      {
+        "player_id": "NBR14",
+        "name": "O. Fischer",
+        "group": "MID",
+        "started": false
+      },
+      {
+        "player_id": "NBR15",
+        "name": "N. Halvorsen",
+        "group": "MID",
+        "started": false
+      },
+      {
+        "player_id": "NBR16",
+        "name": "C. Zielinski",
+        "group": "FWD",
+        "started": false
+      }
+    ]
+  },
+  "final_score": {
+    "home": 4,
+    "away": 3
+  },
+  "duration_s": 5904.3
+}

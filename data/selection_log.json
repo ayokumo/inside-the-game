@@ -1,0 +1,80 @@
+{
+  "method": "scan seeds, keep the highest narrative score per fixture. Matches are emergent, not scripted.",
+  "fixtures": [
+    {
+      "match_id": "SYN-0001",
+      "home": "NBR",
+      "away": "HLW",
+      "chosen_seed": 2006,
+      "narrative_score": 7.0,
+      "notes": [
+        "1 lead change(s)",
+        "late goal",
+        "clear press window (+122% press intensity)"
+      ],
+      "final_score": {
+        "home": 1,
+        "away": 2
+      },
+      "seeds_scanned": 150,
+      "runner_up_scores": [
+        7.0,
+        7.0,
+        7.0,
+        7.0,
+        7.0
+      ],
+      "median_score": 2.0
+    },
+    {
+      "match_id": "SYN-0002",
+      "home": "CAS",
+      "away": "PAV",
+      "chosen_seed": 3108,
+      "narrative_score": 10.0,
+      "notes": [
+        "2 lead change(s)",
+        "late goal",
+        "clear press window (+193% press intensity)"
+      ],
+      "final_score": {
+        "home": 2,
+        "away": 3
+      },
+      "seeds_scanned": 150,
+      "runner_up_scores": [
+        7.0,
+        7.0,
+        7.0,
+        7.0,
+        7.0
+      ],
+      "median_score": 3.0
+    },
+    {
+      "match_id": "SYN-0003",
+      "home": "PAV",
+      "away": "NBR",
+      "chosen_seed": 4094,
+      "narrative_score": 9.0,
+      "notes": [
+        "2 lead change(s)",
+        "late goal",
+        "clear press window (+112% press intensity)"
+      ],
+      "final_score": {
+        "home": 4,
+        "away": 3
+      },
+      "seeds_scanned": 150,
+      "runner_up_scores": [
+        7.0,
+        7.0,
+        7.0,
+        7.0,
+        7.0
+      ],
+      "median_score": 3.0
+    }
+  ]
+}

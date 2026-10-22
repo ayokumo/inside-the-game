@@ -1,0 +1,668 @@
+{
+  "seed": 2006,
+  "match_context": {
+    "tempo": 1.169,
+    "openness": 0.92
+  },
+  "red_cards": [],
+  "substitutions": [
+    {
+      "t": 3229.3,
+      "team": "Harlow United",
+      "out": "HLW06",
+      "in": "HLW15",
+      "out_fatigue": 0.269
+    },
+    {
+      "t": 3578.3,
+      "team": "Northbridge FC",
+      "out": "NBR06",
+      "in": "NBR15",
+      "out_fatigue": 0.321
+    },
+    {
+      "t": 3888.5,
+      "team": "Northbridge FC",
+      "out": "NBR09",
+      "in": "NBR16",
+      "out_fatigue": 0.282
+    },
+    {
+      "t": 3888.5,
+      "team": "Harlow United",
+      "out": "HLW11",
+      "in": "HLW16",
+      "out_fatigue": 0.305
+    },
+    {
+      "t": 4685.5,
+      "team": "Harlow United",
+      "out": "HLW03",
+      "in": "HLW13",
+      "out_fatigue": 0.384
+    },
+    {
+      "t": 5022.5,
+      "team": "Northbridge FC",
+      "out": "NBR07",
+      "in": "NBR14",
+      "out_fatigue": 0.365
+    },
+    {
+      "t": 5171.6,
+      "team": "Northbridge FC",
+      "out": "NBR08",
+      "in": "NBR13",
+      "out_fatigue": 0.344
+    },
+    {
+      "t": 5171.6,
+      "team": "Harlow United",
+      "out": "HLW09",
+      "in": "HLW14",
+      "out_fatigue": 0.363
+    }
+  ],
+  "script": [],
+  "fatigue_curve": [
+    {
+      "t": 62,
+      "home": 0.004,
+      "away": 0.004
+    },
+    {
+      "t": 126,
+      "home": 0.01,
+      "away": 0.009
+    },
+    {
+      "t": 184,
+      "home": 0.015,
+      "away": 0.013
+    },
+    {
+      "t": 241,
+      "home": 0.02,
+      "away": 0.017
+    },
+    {
+      "t": 304,
+      "home": 0.025,
+      "away": 0.021
+    },
+    {
+      "t": 365,
+      "home": 0.031,
+      "away": 0.026
+    },
+    {
+      "t": 422,
+      "home": 0.036,
+      "away": 0.03
+    },
+    {
+      "t": 483,
+      "home": 0.041,
+      "away": 0.034
+    },
+    {
+      "t": 544,
+      "home": 0.046,
+      "away": 0.038
+    },
+    {
+      "t": 605,
+      "home": 0.051,
+      "away": 0.042
+    },
+    {
+      "t": 664,
+      "home": 0.057,
+      "away": 0.047
+    },
+    {
+      "t": 720,
+      "home": 0.06,
+      "away": 0.05
+    },
+    {
+      "t": 782,
+      "home": 0.064,
+      "away": 0.055
+    },
+    {
+      "t": 841,
+      "home": 0.068,
+      "away": 0.059
+    },
+    {
+      "t": 901,
+      "home": 0.072,
+      "away": 0.063
+    },
+    {
+      "t": 963,
+      "home": 0.077,
+      "away": 0.067
+    },
+    {
+      "t": 1026,
+      "home": 0.081,
+      "away": 0.072
+    },
+    {
+      "t": 1083,
+      "home": 0.085,
+      "away": 0.076
+    },
+    {
+      "t": 1141,
+      "home": 0.089,
+      "away": 0.08
+    },
+    {
+      "t": 1202,
+      "home": 0.093,
+      "away": 0.084
+    },
+    {
+      "t": 1265,
+      "home": 0.097,
+      "away": 0.089
+    },
+    {
+      "t": 1324,
+      "home": 0.101,
+      "away": 0.093
+    },
+    {
+      "t": 1381,
+      "home": 0.105,
+      "away": 0.097
+    },
+    {
+      "t": 1442,
+      "home": 0.109,
+      "away": 0.101
+    },
+    {
+      "t": 1514,
+      "home": 0.113,
+      "away": 0.106
+    },
+    {
+      "t": 1566,
+      "home": 0.117,
+      "away": 0.11
+    },
+    {
+      "t": 1627,
+      "home": 0.121,
+      "away": 0.114
+    },
+    {
+      "t": 1681,
+      "home": 0.125,
+      "away": 0.118
+    },
+    {
+      "t": 1742,
+      "home": 0.129,
+      "away": 0.122
+    },
+    {
+      "t": 1806,
+      "home": 0.133,
+      "away": 0.126
+    },
+    {
+      "t": 1860,
+      "home": 0.137,
+      "away": 0.13
+    },
+    {
+      "t": 1924,
+      "home": 0.141,
+      "away": 0.135
+    },
+    {
+      "t": 1982,
+      "home": 0.145,
+      "away": 0.139
+    },
+    {
+      "t": 2047,
+      "home": 0.149,
+      "away": 0.143
+    },
+    {
+      "t": 2102,
+      "home": 0.153,
+      "away": 0.147
+    },
+    {
+      "t": 2167,
+      "home": 0.157,
+      "away": 0.152
+    },
+    {
+      "t": 2223,
+      "home": 0.161,
+      "away": 0.156
+    },
+    {
+      "t": 2283,
+      "home": 0.165,
+      "away": 0.16
+    },
+    {
+      "t": 2346,
+      "home": 0.169,
+      "away": 0.164
+    },
+    {
+      "t": 2403,
+      "home": 0.173,
+      "away": 0.168
+    },
+    {
+      "t": 2465,
+      "home": 0.177,
+      "away": 0.172
+    },
+    {
+      "t": 2525,
+      "home": 0.181,
+      "away": 0.176
+    },
+    {
+      "t": 2584,
+      "home": 0.185,
+      "away": 0.179
+    },
+    {
+      "t": 2643,
+      "home": 0.189,
+      "away": 0.183
+    },
+    {
+      "t": 2703,
+      "home": 0.193,
+      "away": 0.186
+    },
+    {
+      "t": 2760,
+      "home": 0.167,
+      "away": 0.161
+    },
+    {
+      "t": 2824,
+      "home": 0.172,
+      "away": 0.166
+    },
+    {
+      "t": 2882,
+      "home": 0.176,
+      "away": 0.17
+    },
+    {
+      "t": 2943,
+      "home": 0.18,
+      "away": 0.174
+    },
+    {
+      "t": 3002,
+      "home": 0.184,
+      "away": 0.178
+    },
+    {
+      "t": 3061,
+      "home": 0.188,
+      "away": 0.182
+    },
+    {
+      "t": 3121,
+      "home": 0.192,
+      "away": 0.186
+    },
+    {
+      "t": 3181,
+      "home": 0.196,
+      "away": 0.191
+    },
+    {
+      "t": 3243,
+      "home": 0.2,
+      "away": 0.168
+    },
+    {
+      "t": 3306,
+      "home": 0.204,
+      "away": 0.172
+    },
+    {
+      "t": 3365,
+      "home": 0.208,
+      "away": 0.176
+    },
+    {
+      "t": 3420,
+      "home": 0.212,
+      "away": 0.18
+    },
+    {
+      "t": 3486,
+      "home": 0.216,
+      "away": 0.184
+    },
+    {
+      "t": 3542,
+      "home": 0.22,
+      "away": 0.188
+    },
+    {
+      "t": 3603,
+      "home": 0.192,
+      "away": 0.192
+    },
+    {
+      "t": 3666,
+      "home": 0.196,
+      "away": 0.196
+    },
+    {
+      "t": 3724,
+      "home": 0.2,
+      "away": 0.2
+    },
+    {
+      "t": 3782,
+      "home": 0.203,
+      "away": 0.204
+    },
+    {
+      "t": 3845,
+      "home": 0.207,
+      "away": 0.208
+    },
+    {
+      "t": 3902,
+      "home": 0.183,
+      "away": 0.183
+    },
+    {
+      "t": 3971,
+      "home": 0.187,
+      "away": 0.188
+    },
+    {
+      "t": 4022,
+      "home": 0.191,
+      "away": 0.193
+    },
+    {
+      "t": 4084,
+      "home": 0.195,
+      "away": 0.198
+    },
+    {
+      "t": 4141,
+      "home": 0.198,
+      "away": 0.203
+    },
+    {
+      "t": 4207,
+      "home": 0.202,
+      "away": 0.208
+    },
+    {
+      "t": 4260,
+      "home": 0.206,
+      "away": 0.213
+    },
+    {
+      "t": 4322,
+      "home": 0.21,
+      "away": 0.218
+    },
+    {
+      "t": 4382,
+      "home": 0.214,
+      "away": 0.223
+    },
+    {
+      "t": 4442,
+      "home": 0.218,
+      "away": 0.228
+    },
+    {
+      "t": 4502,
+      "home": 0.221,
+      "away": 0.233
+    },
+    {
+      "t": 4565,
+      "home": 0.226,
+      "away": 0.238
+    },
+    {
+      "t": 4623,
+      "home": 0.229,
+      "away": 0.243
+    },
+    {
+      "t": 4683,
+      "home": 0.233,
+      "away": 0.248
+    },
+    {
+      "t": 4755,
+      "home": 0.238,
+      "away": 0.216
+    },
+    {
+      "t": 4804,
+      "home": 0.241,
+      "away": 0.219
+    },
+    {
+      "t": 4863,
+      "home": 0.245,
+      "away": 0.222
+    },
+    {
+      "t": 4922,
+      "home": 0.249,
+      "away": 0.226
+    },
+    {
+      "t": 4984,
+      "home": 0.253,
+      "away": 0.23
+    },
+    {
+      "t": 5040,
+      "home": 0.22,
+      "away": 0.234
+    },
+    {
+      "t": 5110,
+      "home": 0.224,
+      "away": 0.238
+    },
+    {
+      "t": 5172,
+      "home": 0.194,
+      "away": 0.206
+    },
+    {
+      "t": 5227,
+      "home": 0.199,
+      "away": 0.209
+    },
+    {
+      "t": 5281,
+      "home": 0.202,
+      "away": 0.212
+    },
+    {
+      "t": 5346,
+      "home": 0.207,
+      "away": 0.215
+    },
+    {
+      "t": 5401,
+      "home": 0.211,
+      "away": 0.218
+    },
+    {
+      "t": 5461,
+      "home": 0.216,
+      "away": 0.221
+    },
+    {
+      "t": 5525,
+      "home": 0.22,
+      "away": 0.225
+    },
+    {
+      "t": 5581,
+      "home": 0.224,
+      "away": 0.228
+    }
+  ],
+  "goals": [
+    {
+      "t": 3183.8,
+      "team": "Northbridge FC",
+      "scorer": "NBR09",
+      "xg": 0.65,
+      "windows_active": [],
+      "score_before": [
+        0,
+        0
+      ]
+    },
+    {
+      "t": 3932.6,
+      "team": "Harlow United",
+      "scorer": "HLW16",
+      "xg": 0.142,
+      "windows_active": [
+        "W3"
+      ],
+      "score_before": [
+        1,
+        0
+      ]
+    },
+    {
+      "t": 5064.6,
+      "team": "Harlow United",
+      "scorer": "HLW10",
+      "xg": 0.073,
+      "windows_active": [],
+      "score_before": [
+        1,
+        1
+      ]
+    }
+  ],
+  "tactical_windows": [
+    {
+      "id": "W1",
+      "team": "Northbridge FC",
+      "side": "home",
+      "mode": "high_press",
+      "reason": "style_shift",
+      "start_t": 62.4,
+      "end_t": 664.3,
+      "measured": {
+        "press_intensity_in": 0.231,
+        "press_intensity_out": 0.104,
+        "shots_per_min_in": 0.1,
+        "shots_per_min_out": 0.059,
+        "pass_completion_in": 0.8,
+        "pass_completion_out": 0.824,
+        "opp_pass_completion_in": 0.824,
+        "opp_pass_completion_out": 0.823
+      }
+    },
+    {
+      "id": "W2",
+      "team": "Harlow United",
+      "side": "away",
+      "mode": "low_block",
+      "reason": "style_shift",
+      "start_t": 2403.4,
+      "end_t": 2760.3,
+      "measured": {
+        "press_intensity_in": 0.04,
+        "press_intensity_out": 0.125,
+        "shots_per_min_in": 0.0,
+        "shots_per_min_out": 0.113,
+        "pass_completion_in": 0.84,
+        "pass_completion_out": 0.822,
+        "opp_pass_completion_in": 0.8,
+        "opp_pass_completion_out": 0.823
+      }
+    },
+    {
+      "id": "W3",
+      "team": "Harlow United",
+      "side": "away",
+      "mode": "high_press",
+      "reason": "style_shift",
+      "start_t": 3845.1,
+      "end_t": 4755.4,
+      "measured": {
+        "press_intensity_in": 0.105,
+        "press_intensity_out": 0.123,
+        "shots_per_min_in": 0.33,
+        "shots_per_min_out": 0.063,
+        "pass_completion_in": 0.821,
+        "pass_completion_out": 0.824,
+        "opp_pass_completion_in": 0.745,
+        "opp_pass_completion_out": 0.833
+      }
+    },
+    {
+      "id": "W4",
+      "team": "Northbridge FC",
+      "side": "home",
+      "mode": "all_out_attack",
+      "reason": "chasing_game",
+      "start_t": 5110.5,
+      "end_t": 5644.8,
+      "measured": {
+        "press_intensity_in": 0.137,
+        "press_intensity_out": 0.117,
+        "shots_per_min_in": 0.0,
+        "shots_per_min_out": 0.07,
+        "pass_completion_in": 0.786,
+        "pass_completion_out": 0.824,
+        "opp_pass_completion_in": 0.882,
+        "opp_pass_completion_out": 0.815
+      }
+    },
+    {
+      "id": "W5",
+      "team": "Harlow United",
+      "side": "away",
+      "mode": "low_block",
+      "reason": "protecting_lead",
+      "start_t": 5171.6,
+      "end_t": 5644.8,
+      "measured": {
+        "press_intensity_in": 0.087,
+        "press_intensity_out": 0.122,
+        "shots_per_min_in": 0.0,
+        "shots_per_min_out": 0.116,
+        "pass_completion_in": 0.878,
+        "pass_completion_out": 0.816,
+        "opp_pass_completion_in": 0.783,
+        "opp_pass_completion_out": 0.824
+      }
+    }
+  ]
+}
