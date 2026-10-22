@@ -2,3 +2,6 @@ mcp>=2,<3
 uvicorn
 starlette
 pytest
+agent-framework>=1.23,<2
+agent-framework-foundry>=1.15
+azure-identity
