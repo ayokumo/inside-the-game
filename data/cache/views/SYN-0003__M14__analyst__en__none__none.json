@@ -1,0 +1,1 @@
+{"skeleton": "{ev.clock} Goal scored by {ev.team}! {ev.player} converts a header from the corner delivery, leveling the score at {ev.score}. {ev.team} have registered {home_shots} shots, with {home_sot} on target and an expected goals value of {home_xg}.", "notes": []}

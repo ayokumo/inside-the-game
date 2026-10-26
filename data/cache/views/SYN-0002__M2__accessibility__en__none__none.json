@@ -1,0 +1,1 @@
+{"skeleton": "At {ev.clock} {ev.player} from {ev.team} has a shot blocked. Port Avalon have made {away_shots} shots with {away_sot} on target and an expected goals of {away_xg}.", "notes": ["persona output rejected, kept previous wording"]}

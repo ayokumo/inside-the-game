@@ -1,0 +1,1 @@
+{"skeleton": "{ev.clock} Goal! {ev.player} heads home for {ev.team} assisted by D. Volkov. The score is now {ev.score}. {ev.team} have {away_poss} possession and {away_xg} expected goals.", "notes": ["persona output rejected, kept previous wording"]}

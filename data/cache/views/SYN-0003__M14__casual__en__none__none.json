@@ -1,0 +1,1 @@
+{"skeleton": "{ev.clock} Goal for {ev.team}! {ev.player} heads in from the corner to bring the score to {ev.score}. {ev.team} have taken {home_shots} shots, with {home_sot} on target and an expected goals of {home_xg}.", "notes": []}

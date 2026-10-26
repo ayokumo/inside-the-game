@@ -1,0 +1,1 @@
+{"skeleton": "{ev.clock} Goal for {ev.team}! {ev.player} scores with a header from the corner to put it at {ev.score}. {ev.team} have taken {home_shots} shots, with {home_sot} on goal and an xG of {home_xg}.", "notes": []}

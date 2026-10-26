@@ -9,6 +9,7 @@ from pathlib import Path
 
 from agents import pipeline as P
 from intel import claims as C
+from intel import store
 from intel.data import Match, load_match
 from intel.moments import detect_moments
 
@@ -58,6 +59,7 @@ class Service:
                 data = {"skeleton": c.skeleton, "claims": c.claims, "verified": c.verified, "catches": c.catches,
                         "attempts": c.attempts, "used_fallback": c.used_fallback}
                 self._write(path, data)
+                store.state_put("case_files", key, dict(data, moment=moment["id"], as_of=moment["t"]))   # shared case file
                 return dict(data, source="agents")
             cl, sk = P.template_for(moment, match)
             res = C.verify_claims(match, cl, moment["t"])

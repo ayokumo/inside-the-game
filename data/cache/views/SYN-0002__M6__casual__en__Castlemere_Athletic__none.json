@@ -1,0 +1,1 @@
+{"skeleton": "Just at {ev.clock}, {ev.player} from {ev.team} nearly scores but hits the post. {ev.team} have taken {home_shots} shots and their expected goals stand at {home_xg}. They've been holding onto the ball for {home_poss} of the time.", "notes": []}

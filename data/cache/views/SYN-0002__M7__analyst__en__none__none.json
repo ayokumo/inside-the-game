@@ -1,0 +1,1 @@
+{"skeleton": "{ev.clock} Goal scored by {ev.player} for {ev.team}, leveling the scoreline. {ev.team} have registered {home_shots} attempts, with {home_sot} on target, and an xG tally standing at {home_xg}.", "notes": []}

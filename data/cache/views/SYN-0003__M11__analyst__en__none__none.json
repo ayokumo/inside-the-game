@@ -1,0 +1,1 @@
+{"skeleton": "{ev.clock} Goal scored by {ev.player} for {ev.team}, assisted by G. Reyes. The current scoreline reads {ev.score}. {ev.team} have registered {home_shots} shots, with {home_sot} on target, and an xG of {home_xg}, maintaining {home_poss} possession.", "notes": []}

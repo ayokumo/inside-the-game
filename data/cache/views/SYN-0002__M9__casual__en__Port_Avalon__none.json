@@ -1,0 +1,1 @@
+{"skeleton": "{ev.clock} {ev.player} of {ev.team} has a shot blocked in a big chance. {ev.team} have {away_poss} of the possession and {away_xg} expected goals so far.", "notes": ["persona output rejected, kept previous wording"]}

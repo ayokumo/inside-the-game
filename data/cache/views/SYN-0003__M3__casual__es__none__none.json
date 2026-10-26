@@ -1,0 +1,1 @@
+{"skeleton": "{ev.clock} Goal! {ev.player} puts it in to level things up. It's {ev.score} now. {ev.team} have {away_poss} possession and {away_xg} expected goals so far.", "notes": ["translate output rejected, kept previous wording"]}

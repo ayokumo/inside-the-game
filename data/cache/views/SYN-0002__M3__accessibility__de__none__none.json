@@ -1,0 +1,1 @@
+{"skeleton": "{ev.clock} {ev.player} versucht f\u00fcr {ev.team} zu treffen, verfehlt aber. Sie schossen den Ball neben das Tor. {ev.team} haben {away_shots} Versuche unternommen. Ihr erwartetes Torergebnis betr\u00e4gt nun {away_xg}.", "notes": []}

@@ -1,0 +1,1 @@
+{"skeleton": "{ev.clock} {ev.player} von {ev.team} versuchte einen Schuss, aber dieser wurde geblockt. {ev.team} hatten bisher {away_poss} Ballbesitz und {away_xg} erwartete Tore.", "notes": []}

@@ -1,0 +1,1 @@
+{"skeleton": "{ev.clock} {ev.player} levels the score for {ev.team}, assisted by G. Reyes. {ev.team} have registered {home_shots} attempts, {home_sot} of which are on target, accumulating an expected goals value of {home_xg}. Their possession stands at {home_poss} so far.", "notes": []}

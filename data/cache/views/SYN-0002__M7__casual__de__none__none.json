@@ -1,0 +1,1 @@
+{"skeleton": "{ev.clock} Tor! {ev.player} erzielt f\u00fcr {ev.team} den Ausgleich. Sie haben {home_shots} Sch\u00fcsse abgegeben, davon {home_sot} aufs Tor und einen erwarteten Torerwartungswert von {home_xg}.", "notes": ["persona output rejected, kept previous wording"]}

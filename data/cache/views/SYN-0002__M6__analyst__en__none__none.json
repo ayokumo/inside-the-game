@@ -1,0 +1,1 @@
+{"skeleton": "At {ev.clock}, {ev.player} from {ev.team} hits the post with a clear chance. {ev.team} have had {home_shots} shots and an expected goals of {home_xg}, controlling {home_poss} of the possession.", "notes": ["persona output rejected, kept previous wording"]}

@@ -1,0 +1,1 @@
+{"skeleton": "{ev.clock} {ev.player} scores a goal for {ev.team}. The goal was helped by G. Reyes. {ev.team} have tried {home_shots} shots. {home_sot} of these shots were on target. Their expected goals number is {home_xg}. They have had the ball for {home_poss} of the time.", "notes": []}

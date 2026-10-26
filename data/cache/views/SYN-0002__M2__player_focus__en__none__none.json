@@ -1,0 +1,1 @@
+{"skeleton": "{ev.player} from {ev.team} tried to score at {ev.clock} but the shot was blocked. So far, Port Avalon has taken {away_shots} shots, with {away_sot} on goal and an expected goals total of {away_xg}.", "notes": []}

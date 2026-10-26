@@ -1,0 +1,1 @@
+{"skeleton": "{ev.clock} Goal! {ev.player} just scored for {ev.team} to make it level. So far, they've had {home_shots} shots, {home_sot} on target, and an xG of {home_xg}.", "notes": ["translate output rejected, kept previous wording"]}

@@ -1,0 +1,1 @@
+{"skeleton": "{ev.clock} It's a goal from {ev.player} for {ev.team}! They push their side ahead, adjusting the score to {ev.score}. Up to now, they've attempted {home_shots} shots with an xG tally of {home_xg}.", "notes": []}

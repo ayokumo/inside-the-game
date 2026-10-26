@@ -1,0 +1,1 @@
+{"skeleton": "{ev.clock} {ev.player} tries to score for {ev.team} but misses. The shot is not on goal. {ev.team} have tried to score {away_shots} times so far. Their chance to score is {away_xg}.", "notes": []}

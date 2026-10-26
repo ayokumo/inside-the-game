@@ -1,0 +1,1 @@
+{"skeleton": "{ev.player} scores at {ev.clock} for {ev.team}, with G. Reyes setting it up. The score changes to {ev.score}. {ev.team} have taken {home_shots} shots, {home_sot} on target, and accumulated {home_xg} expected goals, controlling {home_poss} possession.", "notes": []}

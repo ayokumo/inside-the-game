@@ -1,0 +1,1 @@
+{"skeleton": "At {ev.clock}, {ev.team} net a goal. {ev.player} capitalizes to level the match. The current scoreline reads {ev.score}. {ev.team} maintain {away_poss} possession with an accumulated xG of {away_xg}.", "notes": []}

@@ -1,0 +1,1 @@
+{"skeleton": "{ev.clock} Goal! {ev.player} scores for {ev.team}, set up by G. Reyes. It's now {ev.score}. {ev.team} have taken {home_shots} shots, with {home_sot} on target and an expected goals of {home_xg}. They've got {home_poss} possession.", "notes": ["translate output rejected, kept previous wording"]}

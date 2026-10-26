@@ -1,0 +1,1 @@
+{"skeleton": "{ev.clock} {ev.player} hat ein Tor f\u00fcr {ev.team} erzielt. G. Reyes hat mit einem Pass geholfen. Der Spielstand ist jetzt {ev.score}. {ev.team} haben {home_shots} Sch\u00fcsse versucht. {home_sot} dieser Sch\u00fcsse waren aufs Tor. Sie haben {home_xg} erwartete Tore. {home_poss} der Zeit haben sie den Ball.", "notes": []}
