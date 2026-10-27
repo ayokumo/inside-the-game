@@ -3,7 +3,6 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: [Dockerfile, requirements-web.txt, intel/**, agents/**, web/**, data/matches/**, data/cache/**]
 permissions:
   contents: read
   packages: write
@@ -21,4 +20,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/match-intel:latest
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/match-intel:latest
+            ghcr.io/${{ github.repository_owner }}/match-intel:${{ github.sha }}
