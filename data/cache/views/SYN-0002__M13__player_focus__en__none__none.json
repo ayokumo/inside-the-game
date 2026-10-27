@@ -1,1 +1,1 @@
-{"skeleton": "{team:away} have the upper hand.", "notes": []}
+{"skeleton": "{ctrl.clock} {ctrl.team} are in charge, showing strong possession at {away_poss} and impressive passing precision of {away_passacc}.", "notes": []}

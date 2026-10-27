@@ -1,1 +1,1 @@
-{"skeleton": "Le match est compl\u00e8tement d\u00e9sorganis\u00e9 maintenant.", "notes": []}
+{"skeleton": "\u00c0 {ctrl.clock}, le jeu est chaotique avec les deux \u00e9quipes actives. {home_shots.team} ont effectu\u00e9 {home_shots} tirs et {away_shots.team} ont {away_shots}, mais aucune des deux \u00e9quipes n'a encore trouv\u00e9 le cadre.", "notes": ["persona output rejected, kept previous wording"]}

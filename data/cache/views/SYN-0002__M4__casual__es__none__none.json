@@ -1,1 +1,1 @@
-{"skeleton": "{team:away} est\u00e1n en control.", "notes": ["persona output rejected, kept previous wording"]}
+{"skeleton": "{ctrl.clock} {ctrl.team} tienen el control, con {away_poss} de la posesi\u00f3n del bal\u00f3n y {away_passacc} de precisi\u00f3n en los pases.", "notes": ["persona output rejected, kept previous wording"]}

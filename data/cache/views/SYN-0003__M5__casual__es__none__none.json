@@ -1,1 +1,1 @@
-{"skeleton": "\u00a1{c1.clock} Gol! {c1.player} lo mete para {c1.team}. Ahora es {c1.score}.", "notes": []}
+{"skeleton": "\u00a1Gol! {ev.player} marca para {ev.team} a las {ev.clock}. El marcador es {ev.score}, y {ev.team} tiene {away_xg} goles esperados.", "notes": ["persona output rejected, kept previous wording"]}

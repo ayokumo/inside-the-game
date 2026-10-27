@@ -1,1 +1,1 @@
-{"skeleton": "{team:away} est en contr\u00f4le.", "notes": ["persona output rejected, kept previous wording"]}
+{"skeleton": "{ctrl.clock} {ctrl.team} ont beaucoup le ballon en ce moment.", "notes": []}

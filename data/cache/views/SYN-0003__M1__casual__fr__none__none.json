@@ -1,1 +1,1 @@
-{"skeleton": "{team:away} ont ce match sous contr\u00f4le.", "notes": []}
+{"skeleton": "At {ctrl.clock}, {ctrl.team} are in control, holding {away_poss} of the ball and completing {away_passacc} of their passes.", "notes": ["translate output rejected, kept previous wording"]}

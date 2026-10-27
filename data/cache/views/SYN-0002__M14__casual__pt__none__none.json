@@ -1,1 +1,1 @@
-{"skeleton": "{team:away} tem a posse da bola e est\u00e1 dominando o jogo.", "notes": []}
+{"skeleton": "{ctrl.clock} {ctrl.team} are in control, with a dominant {away_poss} of the ball.", "notes": ["persona output rejected, kept previous wording", "translate output rejected, kept previous wording"]}

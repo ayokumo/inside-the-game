@@ -1,1 +1,1 @@
-{"skeleton": "{team:away} are in control.", "notes": ["persona output rejected, kept previous wording"]}
+{"skeleton": "{ctrl.clock} {ctrl.team} are dominant in possession with control of the ball.", "notes": ["persona output rejected, kept previous wording"]}

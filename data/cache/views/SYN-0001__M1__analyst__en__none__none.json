@@ -1,1 +1,1 @@
-{"skeleton": "{team:home} maintain possession effectively.", "notes": []}
+{"skeleton": "{ctrl.clock} marks a period where {ctrl.team} maintain control, registering {home_poss} possession and generating {home_shots} shot attempts to date.", "notes": []}

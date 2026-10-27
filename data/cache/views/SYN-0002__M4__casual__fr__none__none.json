@@ -1,1 +1,1 @@
-{"skeleton": "{team:away} sont en contr\u00f4le.", "notes": ["persona output rejected, kept previous wording"]}
+{"skeleton": "\u00c0 {ctrl.clock}, {ctrl.team} ont le ballon le plus, avec {away_poss} de possession et {away_passacc} de pr\u00e9cision sur leurs passes.", "notes": []}

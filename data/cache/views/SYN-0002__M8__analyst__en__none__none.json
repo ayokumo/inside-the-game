@@ -1,1 +1,1 @@
-{"skeleton": "{team:away} maintain possession and dictate the tempo.", "notes": []}
+{"skeleton": "{ctrl.clock} {ctrl.team} are dominant in possession with control of the ball.", "notes": ["persona output rejected, kept previous wording"]}

@@ -1,1 +1,1 @@
-{"skeleton": "Die {team:away} haben den Ball und bestimmen das Spiel.", "notes": []}
+{"skeleton": "{ctrl.clock} {ctrl.team} have the ball most, making {away_poss} of all the play and {away_passacc} of their passes connect.", "notes": ["translate output rejected, kept previous wording"]}

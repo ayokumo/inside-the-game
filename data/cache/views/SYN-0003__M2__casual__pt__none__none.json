@@ -1,1 +1,1 @@
-{"skeleton": "{c1.clock} Gol! {c1.player} marca para {c1.team}. O placar agora \u00e9 {c1.score}.", "notes": []}
+{"skeleton": "{ev.clock} Golo! {ev.player} marca para {ev.team}. O placar est\u00e1 agora {ev.score}.", "notes": []}

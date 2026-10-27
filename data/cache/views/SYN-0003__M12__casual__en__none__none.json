@@ -1,1 +1,1 @@
-{"skeleton": "{team:home} are pushing harder now.", "notes": []}
+{"skeleton": "Hey, {press_recent.team} have stepped up their press from {press_before} to {press_recent} just now.", "notes": []}

@@ -229,3 +229,45 @@ def test_fact_lines_are_plain_and_complete():
     joined = "\n".join(lines)
     assert "{home_poss} =" in joined and "possession" in joined and "expected goals" in joined
     assert any(l.startswith("ev:") and "goal" in l for l in lines) and "moment facts" in joined
+
+
+def _skeleton_for(moment, allowed):
+    if moment["kind"] in ("goal", "red_card", "big_chance_missed"):
+        return "{ev.clock} {ev.player} for {ev.team}, it is {ev.score}."
+    if moment["kind"] == "press_spike":
+        return "{press_recent} pressures per opposition pass now, up from {press_before}."
+    return "{ctrl.clock} {ctrl.team} are in control." if "{ctrl.team}" in allowed else "{ctrl.clock} the game is stretched."
+
+
+def test_skeleton_only_narrator_passes_for_every_moment_kind():
+    from agents.pipeline import allowed_placeholders, build_menu
+    from intel.data import list_matches
+    seen = set()
+    for mm in list_matches():
+        m = load_match(mm["match_id"])
+        for mom in detect_moments(m, m.duration):
+            if mom["kind"] not in ("goal", "red_card", "big_chance_missed", "press_spike", "control_shift"):
+                continue
+            allowed = allowed_placeholders(build_menu(m, mom, mom["t"]), m, mom["t"])
+
+            async def run(role, payload, mom=mom, allowed=allowed):
+                if role == "narrator":
+                    assert payload["allowed_placeholders"] == allowed
+                    return {"skeleton": _skeleton_for(mom, allowed), "causal": []}
+                return {"unsupported": []}
+            c = asyncio.run(P.narrate_moment(m, mom, mom["t"], run))
+            assert c.attempts == 1 and not c.used_fallback, (mom["id"], c.catches)
+            seen.add(mom["kind"])
+    assert {"goal", "control_shift", "press_spike"} <= seen
+
+
+def test_garbage_unreferenced_claims_are_ignored_but_referenced_bad_ones_rejected():
+    m, mom = goal_moment()
+    sk = "{ev.clock} {ev.player} for {ev.team}."
+    junk = {"claims": [{"id": "zz", "kind": "nonsense"}, {"id": "ev", "kind": "stat"}], "skeleton": sk, "causal": []}
+    c = asyncio.run(P.narrate_moment(m, mom, mom["t"], scripted([junk])))
+    assert c.attempts == 1 and "ev" in c.verified                      # menu copy of ev replaced the mangled one
+    own_bad = {"claims": [{"id": "x1", "kind": "stat", "team": m.home, "metric": "shots", "value": 99, "from_t": 0, "to_t": mom["t"]}],
+               "skeleton": "{x1} shots", "causal": []}
+    c2 = asyncio.run(P.narrate_moment(m, mom, mom["t"], scripted([own_bad, junk])))
+    assert c2.attempts == 2 and c2.catches[0]["problems"][0]["kind"] == "claim"

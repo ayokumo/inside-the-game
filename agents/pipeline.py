@@ -10,6 +10,7 @@ Persona and translation only ever see the skeleton, never raw numbers.
 """
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass, field
 from typing import Awaitable, Callable
 
@@ -95,6 +96,20 @@ def fact_lines(verified: dict, moment: dict | None = None) -> list:
     return out
 
 
+def allowed_placeholders(menu: dict, match: Match, as_of: float) -> list:
+    """Exact placeholders that are valid for this moment, built from the verified menu, so the model can pick, not guess."""
+    res = C.verify_claims(match, list(menu.values()), as_of)
+    out = []
+    for r in res:
+        if not r["ok"]:
+            continue
+        v = r["verified"]
+        for f in sorted(C._FIELDS.get(v["kind"], set()), key=lambda x: x or ""):
+            if C._field_problem(v, f) is None:
+                out.append("{%s}" % r["id"] if f is None else "{%s.%s}" % (r["id"], f))
+    return out
+
+
 def build_menu(match: Match, moment: dict, as_of: float) -> dict:
     """Claims already computed by code for this moment. The Narrator picks from these (copying the object
     unchanged) and may add its own, which still get verified. Each id doubles as a placeholder name."""
@@ -132,12 +147,19 @@ async def narrate_moment(match: Match, moment: dict, as_of: float, run: Runner, 
     if moment["t"] > as_of + 1e-9:
         raise ValueError("cannot narrate a moment that has not happened yet at as_of")
     menu = build_menu(match, moment, as_of)
+    allowed = allowed_placeholders(menu, match, as_of)
     catches, feedback = [], []
     for attempt in range(MAX_REWRITES + 1):
-        draft = await run("narrator", {"moment": moment, "analyst": analyst_note, "feedback": feedback,
-                                       "menu": menu,
+        draft = await run("narrator", {"moment": moment, "analyst": analyst_note, "feedback": feedback, "menu": menu,
+                                       "allowed_placeholders": allowed,
                                        "match_id": match.match_id, "as_of": as_of})
-        cl, sk = draft.get("claims", []) or [], draft.get("skeleton", "") or ""
+        sk = draft.get("skeleton", "") or ""
+        # Only claims the sentence actually uses matter. Menu ids always use code's own copy, so the model cannot
+        # mangle them; any other referenced id must be a claim the model wrote itself and it is fully verified.
+        used = {re.match(r"\{([A-Za-z_]\w*)", ph).group(1) for ph in C.placeholders(sk)
+                if re.match(r"\{[A-Za-z_]\w*", ph) and not ph.startswith(("{player:", "{team:"))}
+        own = {c.get("id"): c for c in (draft.get("claims", []) or []) if isinstance(c, dict)}
+        cl = [menu[i] if i in menu else own[i] for i in sorted(used) if i in menu or i in own]
         results = C.verify_claims(match, cl, as_of)
         verified = {r["id"]: r["verified"] for r in results if r["ok"]}
         problems = [{"kind": "claim", "claim_id": r["id"], "claim": next((c for c in cl if c.get("id") == r["id"]), None),

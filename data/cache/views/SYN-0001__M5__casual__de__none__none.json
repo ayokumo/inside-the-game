@@ -1,1 +1,1 @@
-{"skeleton": "Das Spiel ist jetzt total durcheinander und wild.", "notes": []}
+{"skeleton": "Um {ctrl.clock} ist das Spiel chaotisch mit beiden aktiven Teams. {home_shots.team} haben {home_shots} Sch\u00fcsse abgegeben und {away_shots.team} haben {away_shots}, aber keine Seite hat bisher das Ziel getroffen.", "notes": ["persona output rejected, kept previous wording"]}

@@ -1,1 +1,1 @@
-{"skeleton": "The {team:away} team has the ball now.", "notes": []}
+{"skeleton": "At {ctrl.clock}, {ctrl.team} have the ball most of the time, about {away_poss}. They make good passes {away_passacc} of the time.", "notes": []}

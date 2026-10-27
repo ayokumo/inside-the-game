@@ -1,1 +1,1 @@
-{"skeleton": "{team:home} have got this under control.", "notes": []}
+{"skeleton": "{ctrl.clock} Your team, {ctrl.team}, is really in control. They have the ball for {home_poss} and already made {home_shots} shots.", "notes": []}

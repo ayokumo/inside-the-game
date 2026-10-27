@@ -1,1 +1,1 @@
-{"skeleton": "{c1.clock} GOAL! {c1.player} delivers for {c1.team}, adjusting the scoreline to {c1.score}.", "notes": []}
+{"skeleton": "{ev.clock} Goal registered. {ev.player} successfully converts for {ev.team}. The current score stands at {ev.score}.", "notes": []}

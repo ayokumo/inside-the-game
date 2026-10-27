@@ -1,1 +1,1 @@
-{"skeleton": "{team:home} hold the game\u2019s rhythm firmly.", "notes": []}
+{"skeleton": "{ctrl.clock} {ctrl.team} are dominant with {home_poss} possession and have taken {home_shots} shots so far.", "notes": ["persona output rejected, kept previous wording"]}

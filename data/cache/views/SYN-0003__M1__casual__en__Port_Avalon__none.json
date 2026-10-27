@@ -1,1 +1,1 @@
-{"skeleton": "The away team has got this under control.", "notes": []}
+{"skeleton": "At {ctrl.clock}, {ctrl.team} are in control with {away_poss} possession and {away_passacc} pass accuracy.", "notes": []}

@@ -1,1 +1,1 @@
-{"skeleton": "{c1.clock} Goal! {c1.player} puts it in for {c1.team}. Now it's {c1.score}.", "notes": []}
+{"skeleton": "{ev.clock} Goal! {ev.player} finds the net for {ev.team}. The score is now {ev.score}, and {ev.team} has {away_xg} expected goals.", "notes": []}

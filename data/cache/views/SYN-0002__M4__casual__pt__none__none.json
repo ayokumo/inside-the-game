@@ -1,1 +1,1 @@
-{"skeleton": "{team:away} tem isso sob controle.", "notes": []}
+{"skeleton": "{ctrl.clock} {ctrl.team} tem a posse da bola a maior parte do tempo, mantendo-a com {away_poss} de posse e passando com {away_passacc} de precis\u00e3o.", "notes": []}

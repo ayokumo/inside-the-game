@@ -1,1 +1,1 @@
-{"skeleton": "It is {c1.clock}. {c1.player} scores for {c1.team}. The score is now {c1.score}.", "notes": []}
+{"skeleton": "{ev.clock} Goal! {ev.player} made the ball go in for {ev.team}. The score is now {ev.score}.", "notes": []}

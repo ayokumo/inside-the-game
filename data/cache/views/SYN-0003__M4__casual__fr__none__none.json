@@ -1,1 +1,1 @@
-{"skeleton": "\u00c0 la {c1.clock} BUT! {c1.player} marque pour {c1.team}. Le score est maintenant {c1.score}.", "notes": []}
+{"skeleton": "But \u00e0 la {ev.clock} ! {ev.player} envoie le ballon dans les filets pour {ev.team}. Le score est maintenant de {ev.score}.", "notes": []}

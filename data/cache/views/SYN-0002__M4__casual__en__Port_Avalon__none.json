@@ -1,1 +1,1 @@
-{"skeleton": "{team:away} are running the show.", "notes": []}
+{"skeleton": "{ctrl.clock} and {ctrl.team} have got the ball most of the time, with a pass accuracy of {away_passacc} and {away_poss} possession.", "notes": []}

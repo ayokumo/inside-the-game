@@ -1,1 +1,1 @@
-{"skeleton": "A partida est\u00e1 aberta e agitada em todos os lugares.", "notes": []}
+{"skeleton": "\u00c0s {ctrl.clock} o jogo est\u00e1 ca\u00f3tico com ambas as equipes ativas. {home_shots.team} fizeram {home_shots} chutes e {away_shots.team} fizeram {away_shots}, mas nenhum dos lados acertou o alvo ainda.", "notes": ["persona output rejected, kept previous wording"]}

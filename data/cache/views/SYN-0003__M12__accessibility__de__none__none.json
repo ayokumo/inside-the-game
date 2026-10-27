@@ -1,1 +1,1 @@
-{"skeleton": "{team:home} hat den Druck erh\u00f6ht.", "notes": ["persona output rejected, kept previous wording"]}
+{"skeleton": "Die Mannschaft {press_recent.team} presst jetzt mehr als zuvor. Sie sind von {press_before} auf {press_recent} gegangen.", "notes": []}

@@ -1,1 +1,1 @@
-{"skeleton": "{c1.clock} Tor! {c1.player} hat gerade f\u00fcr {c1.team} getroffen. Der Spielstand ist jetzt {c1.score}.", "notes": []}
+{"skeleton": "{ev.clock} Tor! {ev.player} trifft f\u00fcr {ev.team}. Jetzt steht es {ev.score}.", "notes": []}

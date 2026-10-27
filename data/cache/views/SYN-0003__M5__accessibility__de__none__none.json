@@ -1,1 +1,1 @@
-{"skeleton": "{c1.clock} TOR! {c1.player} erzielt f\u00fcr {c1.team}. Der Spielstand ist jetzt {c1.score}.", "notes": []}
+{"skeleton": "Um {ev.clock} erzielt {ev.player} ein Tor f\u00fcr {ev.team}. Der Spielstand ist jetzt {ev.score}. {ev.team} hat {away_xg} erwartete Tore.", "notes": []}

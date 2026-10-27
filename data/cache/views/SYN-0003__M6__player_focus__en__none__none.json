@@ -1,1 +1,1 @@
-{"skeleton": "{team:home} take charge of the game.", "notes": []}
+{"skeleton": "{ctrl.clock} {ctrl.team} leads the action, registering {home_shots} shots, with {home_sot} on target.", "notes": []}

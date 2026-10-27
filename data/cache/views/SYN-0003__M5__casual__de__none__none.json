@@ -1,1 +1,1 @@
-{"skeleton": "{c1.clock} TOR! {c1.player} erzielt f\u00fcr {c1.team}. Der Spielstand ist {c1.score}.", "notes": ["persona output rejected, kept previous wording"]}
+{"skeleton": "{ev.clock} Tor! {ev.player} hat gerade f\u00fcr {ev.team} getroffen. Der Spielstand ist jetzt {ev.score}, und {ev.team} haben {away_xg} erwartete Tore.", "notes": []}

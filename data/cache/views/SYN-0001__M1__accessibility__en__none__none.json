@@ -1,1 +1,1 @@
-{"skeleton": "{team:home} have the ball and are playing.", "notes": []}
+{"skeleton": "{ctrl.clock} {ctrl.team} have the ball more now. They tried {home_shots} shots until now.", "notes": []}
