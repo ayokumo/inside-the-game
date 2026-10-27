@@ -113,3 +113,7 @@ Without a model the app shows cached commentary, or a plain template labelled "a
 The pitch shows ball events (passes, shots, pressures), not all 22 players, because the data is event data. Interface
 labels are English; commentary is translated. The public demo serves pre generated agent output so it is instant and
 does not depend on a live model.
+
+## Live demo
+
+https://match-intel.gentlecliff-a78733ad.canadacentral.azurecontainerapps.io
