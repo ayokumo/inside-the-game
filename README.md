@@ -87,8 +87,8 @@ for limits: no penalties or offsides, modelled speeds, curated demo seeds, and a
 - Microsoft Agent Framework (Python) for every agent
 - Microsoft Foundry model deployment (gpt-4.1-mini) via `FoundryChatClient`
 - Model Context Protocol: our server (MCP Python SDK) and the framework's MCP tool client
-- Azure Container Apps (and Azure Container Registry through source deploy) hosts the demo
-- GitHub for the repository
+- Azure Container Apps hosts the public demo
+- GitHub Actions builds the container image and GitHub Container Registry stores it; Azure runs it
 
 ## Run it
 

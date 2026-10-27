@@ -9,12 +9,12 @@ confident whether it is right or wrong, so our agents never write numbers. A Nar
 recomputes each one from the raw event log, and the final sentence is rebuilt from verified values only. A Checker
 rejects wrong drafts and the app shows them as "Caught and fixed". Persona agents (analyst, casual fan, player focus,
 accessibility) and a translator change tone and language but cannot change a fact. Built with Microsoft Agent Framework
-agents on a Microsoft Foundry model (gpt-4.1-mini), a custom MCP server, and hosted on Azure Container Apps. All data is
+agents on a Microsoft Foundry model (gpt-4.1-mini), a custom MCP server, and hosted on Azure Container Apps (image built by GitHub Actions). All data is
 synthetic, produced by our own simulator with hidden causes we use to measure the system.
 
 ## Technologies used
 Microsoft Agent Framework, Microsoft Foundry (gpt-4.1-mini), Model Context Protocol (MCP server and client),
-Azure Container Apps, Azure Container Registry, GitHub.
+Azure Container Apps (hosting), GitHub Actions and GitHub Container Registry (image build and storage), GitHub.
 
 ## Video script (under 2 minutes, aim for 1:45)
 0:00 to 0:12  Hook, on screen text: "AI commentary sounds confident even when it is wrong." Show a wrong looking line.
